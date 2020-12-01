@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
+import { CMS_NAME, HOME_OG_IMAGE_URL } from '../../lib/constants'
 
 const Meta: React.FC = () => {
   return (
@@ -32,6 +32,11 @@ const Meta: React.FC = () => {
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Prompt&display=swap"
+        rel="stylesheet"
+      ></link>
       <meta
         name="description"
         content={`A statically generated blog example using Next.js and ${CMS_NAME}.`}

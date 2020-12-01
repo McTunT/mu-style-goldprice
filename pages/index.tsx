@@ -1,11 +1,5 @@
-import Layout from '../components/layout'
+import Layout from '@components/Layout'
 import Head from 'next/head'
-
-import Post from '../types/post'
-
-type Props = {
-  allPosts: Post[]
-}
 
 const Index = () => {
   return (
