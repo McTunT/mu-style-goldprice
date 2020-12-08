@@ -1,14 +1,10 @@
-import Layout from '@components/Layout'
-import Head from 'next/head'
+import GoldRing from '@components/GoldRing'
+import GoldP from './api/gold/GoldP'
 
 const Index = () => {
   return (
     <>
-      <Layout>
-        <Head>
-          <title>MU</title>
-        </Head>
-      </Layout>
+      <GoldP />
     </>
   )
 }

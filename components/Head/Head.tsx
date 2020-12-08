@@ -1,8 +1,23 @@
 import styled from 'styled-components'
 
 const Layout = styled.div`
+  .text-head:hover {
+    color: #dd3333;
+  }
+
+  .Capa_1:hover,
+  .Capa_1:focus {
+    fill: red;
+    stroke: red;
+  }
   .app {
     box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px;
+  }
+
+  @media (max-width: 640px) {
+    .text-head {
+      font-size: 14px;
+    }
   }
 `
 
@@ -25,7 +40,7 @@ const Head: React.FC = () => {
             <div className="flex items-center space-x-4 justify-end">
               <a
                 href="http://mu-style.com/"
-                className="text-black hover:text-gray-500 transition-colors duration-200 text-base"
+                className="text-black hover:text-gray-500 transition-colors duration-200 text-base text-head"
               >
                 ช้อปสินค้าทั้งหมดจาก MU
               </a>
@@ -35,7 +50,7 @@ const Head: React.FC = () => {
               >
                 <img
                   data-url="https://www.facebook.com/mustyleth"
-                  className="h-6 w-auto sm:h-6 rounded-sm"
+                  className="h-6 w-auto sm:h-6 rounded-sm reds"
                   src="favicon/facebook.svg"
                 />
               </a>
