@@ -1,6 +1,10 @@
 import React from 'react'
 import { GoldProps } from '@datatypes/dataStructure'
 import { Layout } from './styles'
+import dayjs from 'dayjs'
+
+import 'dayjs/locale/th'
+dayjs.locale('th')
 
 const GoldRing: React.FC<GoldProps> = ({
   goldDate,
@@ -9,11 +13,11 @@ const GoldRing: React.FC<GoldProps> = ({
   gold1Dimes,
   gold2Dimes,
   gold1Baht,
-  jiwery1Gram,
-  jiweryHalfDimes,
-  jiwery1Dimes,
-  jiwery2Dimes,
-  jiwery1Baht,
+  jiwelry1Gram,
+  jiwelryHalfDimes,
+  jiwelry1Dimes,
+  jiwelry2Dimes,
+  jiwelry1Baht,
 }) => {
   return (
     <Layout>
@@ -23,7 +27,9 @@ const GoldRing: React.FC<GoldProps> = ({
             <p className=" text-base md:text-lg float-left ct-mb">
               ราคาทองสมาคม 96.5%
             </p>
-            <p className="text-base md:text-lg float-right ct-mb">{goldDate}</p>
+            <p className="text-base md:text-lg float-right ct-mb">
+              {dayjs(goldDate).format('วันที่ D MMM YYYY เวลา HH:mm น.')}
+            </p>
           </div>
 
           <div className="grid grid-cols-4 gap-4 mt-12 bg-theme-mu text-white p-2 rounded-md ct-mb">
@@ -43,7 +49,7 @@ const GoldRing: React.FC<GoldProps> = ({
             </p>
             <p className="mt-2.5"></p>
             <p className="mt-2.5 mr-16 font-bold text-lg text-center mb-gold font-nb">
-              {jiwery1Gram}
+              {jiwelry1Gram}
             </p>
           </div>
           <div className="grid grid-cols-4 gap-4 p-1">
@@ -53,7 +59,7 @@ const GoldRing: React.FC<GoldProps> = ({
             </p>
             <p className="mt-2.5 mx-16"></p>
             <p className="mt-2.5 mr-16 font-bold text-lg text-center mb-gold font-nb">
-              {jiweryHalfDimes}
+              {jiwelryHalfDimes}
             </p>
           </div>
           <div className="grid grid-cols-4 gap-4 p-1">
@@ -65,7 +71,7 @@ const GoldRing: React.FC<GoldProps> = ({
               500
             </p>
             <p className="mt-2.5 mr-16 font-bold text-lg text-center mb-gold font-nb">
-              {jiwery1Dimes}
+              {jiwelry1Dimes}
             </p>
           </div>
           <div className="grid grid-cols-4 gap-4 p-1">
@@ -75,7 +81,7 @@ const GoldRing: React.FC<GoldProps> = ({
             </p>
             <p className="mt-2.5 mx-16"></p>
             <p className="mt-2.5 mr-16 font-bold text-lg text-center mb-gold font-nb">
-              {jiwery2Dimes}
+              {jiwelry2Dimes}
             </p>
           </div>
           <div className="grid grid-cols-4 gap-4 p-1">
@@ -85,7 +91,7 @@ const GoldRing: React.FC<GoldProps> = ({
             </p>
             <p className="mt-2.5 mx-16"></p>
             <p className="mt-2.5 mr-16 font-bold text-lg fot-sans text-center mb-gold font-nb">
-              {jiwery1Baht}
+              {jiwelry1Baht}
             </p>
           </div>
         </div>

@@ -2,7 +2,6 @@ import { AppProps } from 'next/app'
 import '../styles/index.css'
 import Layout from '@components/Layout'
 import Head from 'next/head'
-import { IntlProvider } from 'react-intl'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -10,9 +9,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>MU</title>
       </Head>
-      <IntlProvider locale="en">
-        <Component {...pageProps} />
-      </IntlProvider>
+      <Component {...pageProps} />
     </Layout>
   )
 }

@@ -52,6 +52,7 @@ const Head: React.FC = () => {
                   data-url="https://www.facebook.com/mustyleth"
                   className="h-6 w-auto sm:h-6 rounded-sm reds"
                   src="favicon/facebook.svg"
+                  alt="facebook mu-style"
                 />
               </a>
               <a
@@ -61,6 +62,7 @@ const Head: React.FC = () => {
                 <img
                   className="h-6 w-auto sm:h-6 rounded-sm"
                   src="favicon/line.svg"
+                  alt="Line mu-style"
                 />
               </a>
             </div>
