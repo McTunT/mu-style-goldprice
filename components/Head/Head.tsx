@@ -1,4 +1,7 @@
-import styled from 'styled-components'
+import React, { useState, useEffect } from 'react'
+import styled, { ThemeProvider } from 'styled-components'
+import { useSpring, animated } from 'react-spring'
+import { Light, Dark, GlobalStyles } from '../../styles/theme'
 
 const Layout = styled.div`
   .text-head:hover {
@@ -22,6 +25,22 @@ const Layout = styled.div`
 `
 
 const Head: React.FC = () => {
+  const props = useSpring<object>({ opacity: 1, from: { opacity: 0 } })
+  const [darkMode, setDarkMode] = useState<boolean | undefined>()
+  const [mounted, setMounted] = useState<boolean>(false)
+
+  useEffect(() => {
+    const darkModeValue: string | null = localStorage.getItem('DARK_MODE')
+    setDarkMode(darkModeValue === 'true')
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('DARK_MODE', darkMode)
+  }, [darkMode])
+
+  if (!mounted) return <div />
+
   return (
     <Layout>
       <div className="relative bg-white">

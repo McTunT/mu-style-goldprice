@@ -1,12 +1,17 @@
 import styled from 'styled-components'
 
 export const Layout = styled.div`
+  .c-wd {
+    color: ${(props) => props.theme.colors.textColor};
+  }
+
   .container-bg {
     margin: 3.5rem;
   }
 
   .bg-hv-app {
     box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+    border: 1px solid  ${(props) => props.theme.colors.borderbox};;
   }
 
   .bg-theme-mu {
