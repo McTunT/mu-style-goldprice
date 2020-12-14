@@ -4,6 +4,7 @@ import fetcher from '../../../lib/fetch'
 import dynamic from 'next/dynamic'
 const GoldRing = dynamic(() => import('@components/GoldRing/GoldRing'))
 import { IntlFormatNumber } from '../../../lib/function'
+import { Layout } from './styles'
 
 export async function getStaticProps() {
   const data = await fetcher('/api/gold')
@@ -19,14 +20,7 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
     initalData,
     refreshInterval: 0,
   } as any)
-  /*
-  const Date = () => {
-    if (typeof data !== 'undefined') {
-      let date = data.G965B.time
-      return IntlDateTimeFormat(date)
-    }
-  }
-*/
+
   const OneGram = () => {
     if (typeof data !== 'undefined') {
       let G = data.G965B.offer_asso
@@ -111,6 +105,7 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
   }
 
   //const GoldDate = Date()
+
   const GoldOneGram = OneGram()
   const GoldHalfDimes = GHDimes()
   const Gold1Dimes = G1Dimes()
@@ -123,7 +118,15 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
   const Jiwelry1Baht = J1Baht()
 
   if (error) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
+  if (!data)
+    return (
+      <Layout>
+        <div className="lds-ripple">
+          <div></div>
+          <div></div>
+        </div>
+      </Layout>
+    )
 
   let date = data.G965B.time
 
