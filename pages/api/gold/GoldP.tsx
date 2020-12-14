@@ -104,8 +104,6 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
     }
   }
 
-  //const GoldDate = Date()
-
   const GoldOneGram = OneGram()
   const GoldHalfDimes = GHDimes()
   const Gold1Dimes = G1Dimes()
@@ -121,7 +119,9 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
   if (!data)
     return (
       <Layout>
-        <div className="lds-ripple">
+        <div className="lds-ring">
+          <div></div>
+          <div></div>
           <div></div>
           <div></div>
         </div>
