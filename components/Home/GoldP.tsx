@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react'
 import useSWR from 'swr'
-import fetcher from '../../../lib/fetch'
-import dynamic from 'next/dynamic'
-const GoldRing = dynamic(() => import('@components/GoldRing/GoldRing'))
-import { IntlFormatNumber } from '../../../lib/function'
+import fetcher from '../../lib/fetch'
+
+import GoldRing from '@components/GoldRing'
+import { IntlFormatNumber } from '../../lib/function'
 import { Layout } from './styles'
 
 export async function getStaticProps() {

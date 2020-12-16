@@ -82,13 +82,13 @@ const Layout = ({ children }) => {
                     {darkMode ? (
                       <img
                         className="h-6 w-auto sm:h-6 rounded-sm"
-                        src="/favicon/night.ico"
+                        src="/favicon/night.svg"
                         alt="dark"
                       />
                     ) : (
                       <img
                         className="h-6 w-auto sm:h-6 rounded-sm"
-                        src="/favicon/sunny.ico"
+                        src="/favicon/sunny.svg"
                         alt="light"
                       />
                     )}

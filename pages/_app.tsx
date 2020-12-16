@@ -7,7 +7,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Layout>
       <Head>
-        <title>MU</title>
+        <title>ราคาทอง - mu-style</title>
       </Head>
       <Component {...pageProps} />
     </Layout>

@@ -1,6 +1,6 @@
-import GoldP from './api/gold/GoldP'
+import GoldP from '../components/Home/GoldP'
 
-const Index = () => {
+const Index: React.FC = () => {
   return (
     <>
       <GoldP />
