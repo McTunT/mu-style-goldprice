@@ -1,10 +1,11 @@
 import React, { Suspense } from 'react'
 import useSWR from 'swr'
 import fetcher from '../../lib/fetch'
-
-import GoldRing from '@components/GoldRing'
+import dynamic from 'next/dynamic'
 import { IntlFormatNumber } from '../../lib/function'
 import { Layout } from './styles'
+
+const GoldRing = dynamic(() => import('@components/GoldRing'))
 
 export async function getStaticProps() {
   const data = await fetcher('/api/gold')

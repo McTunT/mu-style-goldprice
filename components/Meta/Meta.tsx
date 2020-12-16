@@ -4,6 +4,8 @@ import { CMS_NAME, HOME_OG_IMAGE_URL } from '../../lib/constants'
 const Meta: React.FC = () => {
   return (
     <Head>
+      <meta charSet="UTF-8" />
+      <title>ราคาทอง - mu-style</title>
       <link
         rel="apple-touch-icon"
         sizes="180x180"
