@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { ThemeProvider } from 'styled-components'
+import { FC } from 'react'
+import styled, { ThemeProvider } from 'styled-components'
 import { useSpring, animated } from 'react-spring'
 import { LayoutApp } from './styles'
 import { Light, Dark, GlobalStyles } from '../../styles/theme'
-import styled from 'styled-components'
+import useLocalStorage from '../../lib/useLocalStorag'
 
 import Footer from '../Footer'
 import Meta from '../Meta'
@@ -12,21 +12,13 @@ const THead = styled.a`
   color: ${(props) => props.theme.colors.textColor};
 `
 
-const Layout = ({ children }) => {
-  const props = useSpring({ opacity: 1, from: { opacity: 0 } })
-  const [darkMode, setDarkMode] = useState()
-  const [mounted, setMounted] = useState(false)
+const Layout: FC = ({ children }) => {
+  const props = useSpring<object>({ opacity: 1, from: { opacity: 0 } })
+  const [darkMode, setDarkMode] = useLocalStorage('DARK_MODE', true)
 
-  useEffect(() => {
-    const darkModeValue = localStorage.getItem('DARK_MODE')
-    setDarkMode(darkModeValue === 'true')
-    setMounted(true)
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem('DARK_MODE', darkMode)
-  }, [darkMode])
-  if (!mounted) return <div />
+  const toggleTheme = () => {
+    setDarkMode(!darkMode)
+  }
 
   return (
     <LayoutApp>
@@ -75,10 +67,7 @@ const Layout = ({ children }) => {
                       alt="Line mu-style"
                     />
                   </a>
-                  <button
-                    className="button-switch"
-                    onClick={() => setDarkMode(!darkMode)}
-                  >
+                  <button className="button-switch" onClick={toggleTheme}>
                     {darkMode ? (
                       <img
                         className="h-6 w-auto sm:h-6 rounded-sm"
