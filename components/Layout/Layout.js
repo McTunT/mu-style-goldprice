@@ -1,24 +1,31 @@
-import { FC } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { useSpring, animated } from 'react-spring'
 import { LayoutApp } from './styles'
 import { Light, Dark, GlobalStyles } from '../../styles/theme'
-import useLocalStorage from '../../lib/useLocalStorag'
 
 import Footer from '../Footer'
 import Meta from '../Meta'
 
-const THead = styled.a`
+const THead = styled('a')`
   color: ${(props) => props.theme.colors.textColor};
 `
 
-const Layout: FC = ({ children }) => {
-  const props = useSpring<object>({ opacity: 1, from: { opacity: 0 } })
-  const [darkMode, setDarkMode] = useLocalStorage('DARK_MODE', true)
+const Layout = ({ children }) => {
+  const props = useSpring({ opacity: 1, from: { opacity: 0 } })
+  const [darkMode, setDarkMode] = useState()
+  const [mounted, setMounted] = useState(false)
 
-  const toggleTheme = () => {
-    setDarkMode(!darkMode)
-  }
+  useEffect(() => {
+    const darkModeValue = localStorage.getItem('DARK_MODE')
+    setDarkMode(darkModeValue === 'true')
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('DARK_MODE', darkMode)
+  }, [darkMode])
+  if (!mounted) return <div />
 
   return (
     <LayoutApp>
@@ -26,7 +33,7 @@ const Layout: FC = ({ children }) => {
         <ThemeProvider theme={darkMode ? Light : Dark}>
           <div className="relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
-              <div className="flex justify-between items-center  py-1 md:justify-start md:space-x-10">
+              <div className="flex justify-between items-center py-1 md:justify-start md:space-x-10">
                 <div className="flex justify-start lg:w-0 lg:flex-1">
                   <a href="#">
                     <span className="sr-only">mu-style.com</span>
@@ -42,7 +49,7 @@ const Layout: FC = ({ children }) => {
                     href="http://mu-style.com/"
                     target="_blank"
                     rel="noopener"
-                    className="hover:text-gray-500 transition-colors duration-200 text-base text-head"
+                    className="transition-colors duration-200 text-base text-head"
                   >
                     ช้อปสินค้าจาก Mu-style
                   </THead>
@@ -67,7 +74,10 @@ const Layout: FC = ({ children }) => {
                       alt="Line mu-style"
                     />
                   </a>
-                  <button className="button-switch" onClick={toggleTheme}>
+                  <button
+                    className="button-switch"
+                    onClick={() => setDarkMode(!darkMode)}
+                  >
                     {darkMode ? (
                       <img
                         className="h-6 w-auto sm:h-6 rounded-sm"
