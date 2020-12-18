@@ -43,4 +43,10 @@ export const Layout = styled.div`
       transform: rotate(360deg);
     }
   }
+
+  .failed {
+    color: ${(props) => props.theme.colors.textColor};
+    text-align: center;
+    margin: 5rem 0;
+  }
 `

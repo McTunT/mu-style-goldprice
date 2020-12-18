@@ -116,7 +116,14 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
   const Jiwelry2Dimes = J2Dimes()
   const Jiwelry1Baht = J1Baht()
 
-  if (error) return <div>failed to load</div>
+  if (error)
+    return (
+      <Layout>
+        <div className="failed">
+          มีข้อผิดพลาดบางอย่างกำลังอยู่ในขั้นตอนการปรับปรุง Server
+        </div>
+      </Layout>
+    )
   if (!data)
     return (
       <Layout>

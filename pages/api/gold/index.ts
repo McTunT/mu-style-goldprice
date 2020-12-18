@@ -15,12 +15,12 @@ const Gold = async (req: NextApiRequest, res: NextApiResponse) => {
     headers: {
       'Content-Type': 'application/json',
     },
+
     method: 'GET',
   })
 
   await initMiddleware(req, res, cors)
   const gold = await response.json()
-
   return res.status(200).json(gold)
 }
 
