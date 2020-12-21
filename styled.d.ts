@@ -14,6 +14,7 @@ declare module 'styled-components' {
       background: string
       textColor: string
       borderbox: string
+      borderEye: string
     }
   }
 }

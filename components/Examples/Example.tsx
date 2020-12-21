@@ -92,8 +92,6 @@ const Example: React.FC = () => {
   return (
     <ResponsiveContainer width="50%" height={200}>
       <AreaChart
-        width={500}
-        height={400}
         data={data}
         margin={{
           top: 10,
@@ -104,8 +102,8 @@ const Example: React.FC = () => {
       >
         <defs>
           <linearGradient id="mu-style-theme" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="10%" stopColor="#dd3333" stopOpacity={0.1} />
-            <stop offset="99%" stopColor="#FFFFFF" stopOpacity={0.1} />
+            <stop offset="50%" stopColor="#dd3333" stopOpacity={0.2} />
+            <stop offset="95%" stopColor="#fff" stopOpacity={0} />
           </linearGradient>
         </defs>
         <Area

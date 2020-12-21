@@ -1,6 +1,74 @@
 import styled from 'styled-components'
 
 export const Layout = styled.div`
+  .goldpice-mu-style-inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 0;
+  }
+
+  .goldpice-mu-style {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-shadow: rgb(0 0 0 / 4%) 0px 0px 20px 0px;
+    box-shadow: rgb(0 0 0 / 4%) 0px 0px 20px 0px;
+    background: ${(props) => props.theme.colors.background};
+    border: 1px solid ${(props) => props.theme.colors.borderEye};
+    border-radius: 3px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    line-height: 100%;
+    width: 100%;
+    min-width: 260px;
+    font-size: 12px;
+    color: #333;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 15px;
+    height: 96px;
+
+    :hover {
+      box-shadow: rgb(0 0 0 / 15%) 0px 0px 20px 0px;
+    }
+  }
+
+  .goldpice-mu-style-detail {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+    z-index: 100;
+  }
+
+  .chart-mu-style {
+    height: 28px;
+    width: 86px;
+    position: absolute;
+    right: -105px;
+    top: 50%;
+    margin-top: -25px;
+  }
+
+  .gold-change-up {
+    color: #18cf73;
+  }
+
+  .gold-change-down {
+    color: #dd3333;
+  }
+
   .c-wd {
     color: ${(props) => props.theme.colors.textColor};
   }
@@ -11,7 +79,7 @@ export const Layout = styled.div`
 
   .bg-hv-app {
     box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
-    border: 1px solid  ${(props) => props.theme.colors.borderbox};;
+    border: 1px solid ${(props) => props.theme.colors.borderbox};
   }
 
   .bg-theme-mu {

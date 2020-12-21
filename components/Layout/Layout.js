@@ -11,6 +11,10 @@ const THead = styled('a')`
   color: ${(props) => props.theme.colors.textColor};
 `
 
+const HdColor = styled.div`
+  border-bottom: 1px solid ${(props) => props.theme.colors.borderbox};
+`
+
 const Layout = ({ children }) => {
   const props = useSpring({ opacity: 1, from: { opacity: 0 } })
   const [darkMode, setDarkMode] = useState()
@@ -31,11 +35,11 @@ const Layout = ({ children }) => {
     <LayoutApp>
       <animated.div style={props}>
         <ThemeProvider theme={darkMode ? Light : Dark}>
-          <div className="relative">
+          <HdColor className="relative border-b">
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
               <div className="flex justify-between items-center py-1 md:justify-start md:space-x-10">
                 <div className="flex justify-start lg:w-0 lg:flex-1">
-                  <a href="#">
+                  <a href="/">
                     <span className="sr-only">mu-style.com</span>
                     <img
                       className="h-14 w-auto sm:h-14"
@@ -95,7 +99,7 @@ const Layout = ({ children }) => {
                 </div>
               </div>
             </div>
-          </div>
+          </HdColor>
           <GlobalStyles />
           <Meta />
           <main>{children}</main>

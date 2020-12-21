@@ -1,12 +1,12 @@
 import GoldP from '../components/Home/GoldP'
-import Example from '@components/Examples/Example'
+import dynamic from 'next/dynamic'
+const Layout = dynamic(() => import('@components/Layout'))
 
 const Index: React.FC = () => {
   return (
-    <>
+    <Layout>
       <GoldP />
-      <Example />
-    </>
+    </Layout>
   )
 }
 

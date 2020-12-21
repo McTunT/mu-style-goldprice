@@ -11,6 +11,7 @@ export const Light: DefaultTheme = {
     background: '#fff',
     textColor: '#000',
     borderbox: 'none',
+    borderEye: 'none',
   },
 }
 
@@ -25,6 +26,7 @@ export const Dark = {
     background: '#010409',
     textColor: '#fff',
     borderbox: '#30363d',
+    borderEye: '#dd3333',
   },
 }
 

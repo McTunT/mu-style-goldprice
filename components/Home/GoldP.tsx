@@ -22,6 +22,24 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
     refreshInterval: 0,
   } as any)
 
+  const ZeroDotSixGram = () => {
+    if (typeof data !== 'undefined') {
+      let G = data.G965B.offer_asso
+      let zerodotsix = 0.0394
+      return IntlFormatNumber(G * zerodotsix)
+    }
+  }
+
+  const J06Gram = () => {
+    if (typeof data !== 'undefined') {
+      let G = data.G965B.offer_asso
+      let zerodotsix = 0.0394
+      let GGram = G * zerodotsix
+      let FH = 500
+      return IntlFormatNumber(GGram + FH)
+    }
+  }
+
   const OneGram = () => {
     if (typeof data !== 'undefined') {
       let G = data.G965B.offer_asso
@@ -105,16 +123,36 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
     }
   }
 
+  const G2Baht = () => {
+    if (typeof data !== 'undefined') {
+      let G = data.G965B.offer_asso
+      let bath = 2
+      return IntlFormatNumber(G * bath)
+    }
+  }
+
+  const J2Baht = () => {
+    if (typeof data !== 'undefined') {
+      let G = data.G965B.offer_asso * 2
+      let FH = 500
+      return IntlFormatNumber(G + FH)
+    }
+  }
+
+  const ZeroDotSixGrams = ZeroDotSixGram()
   const GoldOneGram = OneGram()
   const GoldHalfDimes = GHDimes()
   const Gold1Dimes = G1Dimes()
   const Gold2Dimes = G2Dimes()
   const Gold1Baht = G1Baht()
+  const Gold2Baht = G2Baht()
+  const Jiwelry06Grams = J06Gram()
   const JiwelryOneGram = JOneGram()
   const JiwelryHalfDimes = JHDimes()
   const Jiwelry1Dimes = J1Dimes()
   const Jiwelry2Dimes = J2Dimes()
   const Jiwelry1Baht = J1Baht()
+  const Jiwelry2Baht = J2Baht()
 
   if (error)
     return (
@@ -142,16 +180,20 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
     <Suspense fallback={<div />}>
       <GoldRing
         goldDate={date}
+        gold06gram={ZeroDotSixGrams}
         gold1Gram={GoldOneGram}
         goldHalfDimes={GoldHalfDimes}
         gold1Dimes={Gold1Dimes}
         gold2Dimes={Gold2Dimes}
         gold1Baht={Gold1Baht}
+        gold2Baht={Gold2Baht}
+        jiwelry06Gram={Jiwelry06Grams}
         jiwelry1Gram={JiwelryOneGram}
         jiwelryHalfDimes={JiwelryHalfDimes}
         jiwelry1Dimes={Jiwelry1Dimes}
         jiwelry2Dimes={Jiwelry2Dimes}
         jiwelry1Baht={Jiwelry1Baht}
+        jiwelry2Baht={Jiwelry2Baht}
       />
     </Suspense>
   )
