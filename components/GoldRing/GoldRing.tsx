@@ -239,7 +239,6 @@ const GoldRing: React.FC<GoldProps> = ({
                       left: 0,
                       bottom: 5,
                     }}
-                    cursor="pointer"
                   >
                     <defs>
                       <linearGradient
@@ -292,7 +291,6 @@ const GoldRing: React.FC<GoldProps> = ({
                       left: 0,
                       bottom: 5,
                     }}
-                    cursor="pointer"
                   >
                     <defs>
                       <linearGradient
