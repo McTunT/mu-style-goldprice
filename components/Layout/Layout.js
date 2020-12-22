@@ -4,8 +4,9 @@ import { useSpring, animated } from 'react-spring'
 import { LayoutApp } from './styles'
 import { Light, Dark, GlobalStyles } from '../../styles/theme'
 
-import Footer from '../Footer'
+//import Footer from '../Footer'
 import Meta from '../Meta'
+import Footer from '@components/Footer'
 
 const THead = styled('a')`
   color: ${(props) => props.theme.colors.textColor};
@@ -103,7 +104,6 @@ const Layout = ({ children }) => {
           <GlobalStyles />
           <Meta />
           <main>{children}</main>
-          <Footer />
         </ThemeProvider>
       </animated.div>
     </LayoutApp>

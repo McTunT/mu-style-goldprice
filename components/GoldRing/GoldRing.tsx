@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { GoldProps } from '@datatypes/dataStructure'
 import Link from 'next/link'
 import { Layout } from './styles'
 import dayjs from 'dayjs'
+
+import Footer from '@components/Footer'
 
 import 'dayjs/locale/th'
 dayjs.locale('th')
@@ -414,6 +416,10 @@ const GoldRing: React.FC<GoldProps> = ({
           </div>
         </div>
       </div>
+
+      <Suspense fallback={<div />}>
+        <Footer />
+      </Suspense>
     </Layout>
   )
 }

@@ -1,10 +1,12 @@
 import React, { Suspense } from 'react'
-import useSWR from 'swr'
+//import useSWR from 'swr'
 import fetcher from '../../lib/fetch'
 import dynamic from 'next/dynamic'
 import { IntlFormatNumber } from '../../lib/function'
 import { Layout } from './styles'
+import useStickySWR from '../../lib/useStickySWR'
 
+const Footer = dynamic(() => import('@components/Footer'))
 const GoldRing = dynamic(() => import('@components/GoldRing'))
 
 export async function getStaticProps() {
@@ -17,7 +19,7 @@ interface PropsGold {
 }
 
 const GoldP: React.FC<PropsGold> = ({ initalData }) => {
-  const { data, error } = useSWR('/api/gold', fetcher, {
+  const { data, error } = useStickySWR('/api/gold', fetcher, {
     initalData,
     refreshInterval: 0,
   } as any)
@@ -157,45 +159,35 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
   if (error)
     return (
       <Layout>
-        <div className="failed">
-          มีข้อผิดพลาดบางอย่างกำลังอยู่ในขั้นตอนการปรับปรุง Server
-        </div>
-      </Layout>
-    )
-  if (!data)
-    return (
-      <Layout>
-        <div className="lds-ring">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+        <div className="failed">มีข้อผิดพลาดบางอย่าง</div>
       </Layout>
     )
 
+  if (!data) return <div />
   let date = data.G965B.time
 
   return (
-    <Suspense fallback={<div />}>
-      <GoldRing
-        goldDate={date}
-        gold06gram={ZeroDotSixGrams}
-        gold1Gram={GoldOneGram}
-        goldHalfDimes={GoldHalfDimes}
-        gold1Dimes={Gold1Dimes}
-        gold2Dimes={Gold2Dimes}
-        gold1Baht={Gold1Baht}
-        gold2Baht={Gold2Baht}
-        jiwelry06Gram={Jiwelry06Grams}
-        jiwelry1Gram={JiwelryOneGram}
-        jiwelryHalfDimes={JiwelryHalfDimes}
-        jiwelry1Dimes={Jiwelry1Dimes}
-        jiwelry2Dimes={Jiwelry2Dimes}
-        jiwelry1Baht={Jiwelry1Baht}
-        jiwelry2Baht={Jiwelry2Baht}
-      />
-    </Suspense>
+    <React.Fragment>
+      <Suspense fallback={<div />}>
+        <GoldRing
+          goldDate={date}
+          gold06gram={ZeroDotSixGrams}
+          gold1Gram={GoldOneGram}
+          goldHalfDimes={GoldHalfDimes}
+          gold1Dimes={Gold1Dimes}
+          gold2Dimes={Gold2Dimes}
+          gold1Baht={Gold1Baht}
+          gold2Baht={Gold2Baht}
+          jiwelry06Gram={Jiwelry06Grams}
+          jiwelry1Gram={JiwelryOneGram}
+          jiwelryHalfDimes={JiwelryHalfDimes}
+          jiwelry1Dimes={Jiwelry1Dimes}
+          jiwelry2Dimes={Jiwelry2Dimes}
+          jiwelry1Baht={Jiwelry1Baht}
+          jiwelry2Baht={Jiwelry2Baht}
+        />
+      </Suspense>
+    </React.Fragment>
   )
 }
 

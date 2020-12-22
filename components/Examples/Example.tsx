@@ -1,5 +1,12 @@
 import React from 'react'
-import { AreaChart, Area, ResponsiveContainer } from 'recharts'
+import {
+  AreaChart,
+  Area,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts'
 
 const data = [
   {
@@ -90,7 +97,7 @@ const data = [
 
 const Example: React.FC = () => {
   return (
-    <ResponsiveContainer width="50%" height={200}>
+    <ResponsiveContainer width="100%" height={330}>
       <AreaChart
         data={data}
         margin={{
@@ -102,10 +109,13 @@ const Example: React.FC = () => {
       >
         <defs>
           <linearGradient id="mu-style-theme" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="50%" stopColor="#dd3333" stopOpacity={0.2} />
+            <stop offset="100%" stopColor="#dd3333" stopOpacity={0.1} />
             <stop offset="95%" stopColor="#fff" stopOpacity={0} />
           </linearGradient>
         </defs>
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
         <Area
           type="monotone"
           dataKey="uv"
