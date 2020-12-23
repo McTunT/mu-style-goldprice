@@ -1,12 +1,10 @@
 import React, { Suspense } from 'react'
-//import useSWR from 'swr'
 import fetcher from '../../lib/fetch'
 import dynamic from 'next/dynamic'
 import { IntlFormatNumber } from '../../lib/function'
 import { Layout } from './styles'
 import useStickySWR from '../../lib/useStickySWR'
 
-const Footer = dynamic(() => import('@components/Footer'))
 const GoldRing = dynamic(() => import('@components/GoldRing'))
 
 export async function getStaticProps() {
@@ -24,7 +22,7 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
     refreshInterval: 0,
   } as any)
 
-  const ZeroDotSixGram = () => {
+  const G06Gram = () => {
     if (typeof data !== 'undefined') {
       let G = data.G965B.offer_asso
       let zerodotsix = 0.0394
@@ -141,7 +139,7 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
     }
   }
 
-  const ZeroDotSixGrams = ZeroDotSixGram()
+  const Gold06Grams = G06Gram()
   const GoldOneGram = OneGram()
   const GoldHalfDimes = GHDimes()
   const Gold1Dimes = G1Dimes()
@@ -159,7 +157,7 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
   if (error)
     return (
       <Layout>
-        <div className="failed">มีข้อผิดพลาดบางอย่าง</div>
+        <div className="failed">เกิดข้อผิดพลาดบางอย่าง</div>
       </Layout>
     )
 
@@ -171,7 +169,7 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
       <Suspense fallback={<div />}>
         <GoldRing
           goldDate={date}
-          gold06gram={ZeroDotSixGrams}
+          gold06gram={Gold06Grams}
           gold1Gram={GoldOneGram}
           goldHalfDimes={GoldHalfDimes}
           gold1Dimes={Gold1Dimes}

@@ -3,8 +3,9 @@ import { GoldProps } from '@datatypes/dataStructure'
 import Link from 'next/link'
 import { Layout } from './styles'
 import dayjs from 'dayjs'
+import dynamic from 'next/dynamic'
 
-import Footer from '@components/Footer'
+const Footer = dynamic(() => import('@components/Footer'))
 
 import 'dayjs/locale/th'
 dayjs.locale('th')

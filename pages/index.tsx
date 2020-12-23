@@ -1,10 +1,9 @@
-import GoldP from '../components/Home/GoldP'
 import dynamic from 'next/dynamic'
-const Layouts = dynamic(() => import('@components/Layout'))
-import React, { Suspense, useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, Suspense } from 'react'
 import { Layout } from '@components/Home/styles'
 
-const Footer = dynamic(() => import('@components/Footer'))
+const LayoutApp = dynamic(() => import('@components/Layout'))
+const GoldPrice = dynamic(() => import('@components/Home/GoldP'))
 
 function useMounted() {
   const [mounted, setMounted] = useState(false)
@@ -12,7 +11,7 @@ function useMounted() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setMounted(true)
-    }, 3000)
+    }, 2000)
     return () => clearTimeout(timer)
   }, [])
 
@@ -23,9 +22,11 @@ const Index: React.FC = () => {
   const isMounted = useMounted()
 
   return (
-    <Layouts>
+    <LayoutApp>
       {isMounted ? (
-        <GoldP />
+        <Suspense fallback={<div />}>
+          <GoldPrice />
+        </Suspense>
       ) : (
         <Layout>
           <div className="lds-ring">
@@ -36,7 +37,7 @@ const Index: React.FC = () => {
           </div>
         </Layout>
       )}
-    </Layouts>
+    </LayoutApp>
   )
 }
 
