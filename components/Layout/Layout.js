@@ -3,10 +3,9 @@ import styled, { ThemeProvider } from 'styled-components'
 import { useSpring, animated } from 'react-spring'
 import { LayoutApp } from './styles'
 import { Light, Dark, GlobalStyles } from '../../styles/theme'
+import dynamic from 'next/dynamic'
 
-//import Footer from '../Footer'
-import Meta from '../Meta'
-import Footer from '@components/Footer'
+const Meta = dynamic(() => import('../Meta'))
 
 const THead = styled('a')`
   color: ${(props) => props.theme.colors.textColor};
@@ -86,13 +85,13 @@ const Layout = ({ children }) => {
                     {darkMode ? (
                       <img
                         className="h-6 w-auto sm:h-6 rounded-sm"
-                        src="/favicon/night.svg"
+                        src="/favicon/moon.svg"
                         alt="dark"
                       />
                     ) : (
                       <img
                         className="h-6 w-auto sm:h-6 rounded-sm"
-                        src="/favicon/sunny.svg"
+                        src="/favicon/sun.svg"
                         alt="light"
                       />
                     )}
