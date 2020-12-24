@@ -12,6 +12,8 @@ export const Light: DefaultTheme = {
     textColor: '#000',
     borderbox: 'none',
     borderEye: 'none',
+    textLookBack: 'rgba(17, 51, 83, 0.3)',
+    textHLookBack: '#000',
   },
 }
 
@@ -27,6 +29,8 @@ export const Dark = {
     textColor: '#fff',
     borderbox: '#30363d',
     borderEye: '#dd3333',
+    textLookBack: '#ececec',
+    textHLookBack: '#0C79D4',
   },
 }
 

@@ -15,6 +15,8 @@ declare module 'styled-components' {
       textColor: string
       borderbox: string
       borderEye: string
+      textLookBack: string
+      textHLookBack: string
     }
   }
 }
