@@ -4,6 +4,8 @@ import { useSpring, animated } from 'react-spring'
 import { LayoutApp } from './styles'
 import { Light, Dark, GlobalStyles } from '../../styles/theme'
 import dynamic from 'next/dynamic'
+import * as Icon from 'react-feather'
+import Link from 'next/link'
 
 const Meta = dynamic(() => import('../Meta'))
 
@@ -14,6 +16,10 @@ const THead = styled('a')`
 const HdColor = styled.div`
   border-bottom: 1px solid ${(props) => props.theme.colors.borderbox};
 `
+
+const iconStyle = {
+  stroke: '#6c757d',
+}
 
 const Layout = ({ children }) => {
   const props = useSpring({ opacity: 1, from: { opacity: 0 } })
@@ -49,35 +55,36 @@ const Layout = ({ children }) => {
                   </a>
                 </div>
                 <div className="flex items-center space-x-4 justify-end">
-                  <THead
-                    href="http://mu-style.com/"
-                    target="_blank"
-                    rel="noopener"
-                    className="transition-colors duration-200 text-base text-head"
-                  >
-                    ช้อปสินค้าจาก Mu-style
-                  </THead>
-                  <a
-                    href="https://www.facebook.com/mustyleth"
-                    className="transition-colors duration-200 text-sm "
-                  >
-                    <img
-                      data-url="https://www.facebook.com/mustyleth"
-                      className="h-6 w-auto sm:h-6 rounded-sm reds"
-                      src="favicon/facebook.svg"
-                      alt="facebook mu-style"
-                    />
-                  </a>
-                  <a
+                  <React.Fragment>
+                    <Link href="https://mu-style.com">
+                      <span>
+                        <Icon.ShoppingCart
+                          className="cursor-pointer"
+                          style={iconStyle}
+                        />
+                      </span>
+                    </Link>
+                    <Link href="https://web.facebook.com/mustyleth">
+                      <span>
+                        <Icon.Facebook
+                          className="cursor-pointer"
+                          style={iconStyle}
+                        />
+                      </span>
+                    </Link>
+                  </React.Fragment>
+                  <Link
                     href="#"
                     className="transition-colors duration-200 text-sm"
                   >
-                    <img
-                      className="h-6 w-auto sm:h-6 rounded-sm"
-                      src="favicon/line.svg"
-                      alt="Line mu-style"
-                    />
-                  </a>
+                    <span>
+                      <img
+                        className="h-6 w-auto sm:h-6 rounded-sm cursor-pointer"
+                        src="favicon/line.svg"
+                        alt="Line mu-style"
+                      />
+                    </span>
+                  </Link>
                   <button
                     className="button-switch"
                     onClick={() => setDarkMode(!darkMode)}

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Layout = styled.div`
+const Layout = styled.div`
   .layout {
     align-self: flex-start;
     margin-top: -4px;
@@ -36,3 +36,5 @@ export const Layout = styled.div`
     }
   }
 `
+
+export default Layout
