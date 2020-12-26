@@ -45,12 +45,12 @@ const Layout = ({ children }) => {
                   <div className="flex-shrink-0 flex items-center">
                     <img
                       className="block lg:hidden h-16 w-auto"
-                      src="favicon/MU_Logo192x192.ico"
+                      src="/favicon/MU_Logo192x192.ico"
                       alt="nav-mu-style"
                     />
                     <img
                       className="hidden lg:block h-16 w-auto"
-                      src="favicon/Mu-full-logo.ico"
+                      src="/favicon/Mu-full-logo.ico"
                       alt="nav-moblie-style"
                     />
                   </div>

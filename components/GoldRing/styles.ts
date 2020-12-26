@@ -62,11 +62,11 @@ export const Layout = styled.div`
   }
 
   .gold-change-up {
-    color: #18cf73;
+    color: #009f6b;
   }
 
   .gold-change-down {
-    color: #dd3333;
+    color: #ff355e;
   }
 
   .c-wd {
