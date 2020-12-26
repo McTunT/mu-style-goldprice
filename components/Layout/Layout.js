@@ -40,20 +40,25 @@ const Layout = ({ children }) => {
         <ThemeProvider theme={darkMode ? Light : Dark}>
           <HdColor className="relative border-b">
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
-              <div className="flex justify-between items-center py-1 md:justify-start md:space-x-10">
-                <div className="flex justify-start lg:w-0 lg:flex-1">
-                  <a href="/">
+              <div className="relative flex items-center justify-between h-16">
+                <div className="flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                  <div className="flex-shrink-0 flex items-center">
                     <img
-                      className="h-14 w-auto sm:h-14"
-                      src="favicon/MU_Logo370x263.png"
-                      alt="mu-style"
+                      className="block lg:hidden h-8 w-auto"
+                      src="favicon/MU_Logo192x192.ico"
+                      alt="nav-mu-style"
                     />
-                  </a>
+                    <img
+                      className="hidden lg:block h-8 w-auto"
+                      src="favicon/MU_Logo370x263.png"
+                      alt="nav-moblie-style"
+                    />
+                  </div>
                 </div>
                 <div className="flex items-center space-x-4 justify-end">
                   <React.Fragment>
                     <Link href="https://mu-style.com">
-                      <span>
+                      <span className="px-2">
                         <Icon.ShoppingCart
                           className="icon-nav-feather"
                           style={iconStyle}
@@ -61,7 +66,7 @@ const Layout = ({ children }) => {
                       </span>
                     </Link>
                     <Link href="https://web.facebook.com/mustyleth">
-                      <span>
+                      <span className="px-2">
                         <Icon.Facebook
                           className="icon-nav-feather"
                           style={iconStyle}
@@ -69,7 +74,7 @@ const Layout = ({ children }) => {
                       </span>
                     </Link>
                     <Link href="#">
-                      <span>
+                      <span className="px-2">
                         <FaLine
                           className="icon-nav-fa"
                           style={{
@@ -80,23 +85,29 @@ const Layout = ({ children }) => {
                         />
                       </span>
                     </Link>
-                    <span>
-                      <div
-                        className="cursor-pointer"
-                        onClick={() => setDarkMode(!darkMode)}
-                      >
-                        <div>
-                          {darkMode ? (
+
+                    <div
+                      className="px-2"
+                      onClick={() => setDarkMode(!darkMode)}
+                    >
+                      <div>
+                        {darkMode ? (
+                          <span>
                             <Icon.Moon
                               color={'#6c757d'}
                               className="icon-nav-feather"
                             />
-                          ) : (
-                            <Icon.Sun color={'#ffc107'} />
-                          )}
-                        </div>
+                          </span>
+                        ) : (
+                          <span>
+                            <Icon.Sun
+                              className="icon-nav-feather"
+                              color={'#ffc107'}
+                            />
+                          </span>
+                        )}
                       </div>
-                    </span>
+                    </div>
                   </React.Fragment>
                 </div>
               </div>

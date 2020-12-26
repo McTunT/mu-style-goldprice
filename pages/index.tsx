@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import React, { useEffect, useState, Suspense } from 'react'
 import { Layout } from '@components/Home/styles'
+//import Navbar from '@components/Layout/Nav'
 
 const LayoutApp = dynamic(() => import('@components/Layout'))
 const GoldPrice = dynamic(() => import('@components/Home/GoldP'))
