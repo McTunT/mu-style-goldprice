@@ -44,13 +44,13 @@ const Layout = ({ children }) => {
                 <div className="flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="flex-shrink-0 flex items-center">
                     <img
-                      className="block lg:hidden h-8 w-auto"
+                      className="block lg:hidden h-16 w-auto"
                       src="favicon/MU_Logo192x192.ico"
                       alt="nav-mu-style"
                     />
                     <img
-                      className="hidden lg:block h-8 w-auto"
-                      src="favicon/MU_Logo370x263.png"
+                      className="hidden lg:block h-16 w-auto"
+                      src="favicon/Mu-full-logo.ico"
                       alt="nav-moblie-style"
                     />
                   </div>
