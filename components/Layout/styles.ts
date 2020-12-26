@@ -16,6 +16,22 @@ export const LayoutApp = styled.div`
     transform: scale(1);
   }
 
+  .icon-nav-feather {
+    cursor: pointer;
+
+    :hover {
+      stroke: rgba(108, 117, 125, 0.6) !important;
+    }
+  }
+
+  .icon-nav-fa {
+    cursor: pointer;
+
+    :hover {
+      fill: rgba(108, 117, 125, 0.6) !important;
+    }
+  }
+
   .Capa_1:hover,
   .Capa_1:focus {
     fill: red;

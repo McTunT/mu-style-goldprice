@@ -6,12 +6,9 @@ import { Light, Dark, GlobalStyles } from '../../styles/theme'
 import dynamic from 'next/dynamic'
 import * as Icon from 'react-feather'
 import Link from 'next/link'
+import { FaLine } from 'react-icons/fa'
 
 const Meta = dynamic(() => import('../Meta'))
-
-const THead = styled('a')`
-  color: ${(props) => props.theme.colors.textColor};
-`
 
 const HdColor = styled.div`
   border-bottom: 1px solid ${(props) => props.theme.colors.borderbox};
@@ -46,11 +43,10 @@ const Layout = ({ children }) => {
               <div className="flex justify-between items-center py-1 md:justify-start md:space-x-10">
                 <div className="flex justify-start lg:w-0 lg:flex-1">
                   <a href="/">
-                    <span className="sr-only">mu-style.com</span>
                     <img
                       className="h-14 w-auto sm:h-14"
                       src="favicon/MU_Logo370x263.png"
-                      alt=""
+                      alt="mu-style"
                     />
                   </a>
                 </div>
@@ -59,7 +55,7 @@ const Layout = ({ children }) => {
                     <Link href="https://mu-style.com">
                       <span>
                         <Icon.ShoppingCart
-                          className="cursor-pointer"
+                          className="icon-nav-feather"
                           style={iconStyle}
                         />
                       </span>
@@ -67,42 +63,41 @@ const Layout = ({ children }) => {
                     <Link href="https://web.facebook.com/mustyleth">
                       <span>
                         <Icon.Facebook
-                          className="cursor-pointer"
+                          className="icon-nav-feather"
                           style={iconStyle}
                         />
                       </span>
                     </Link>
-                  </React.Fragment>
-                  <Link
-                    href="#"
-                    className="transition-colors duration-200 text-sm"
-                  >
+                    <Link href="#">
+                      <span>
+                        <FaLine
+                          className="icon-nav-fa"
+                          style={{
+                            fill: '#6c757d',
+                            width: '24px',
+                            height: '24px',
+                          }}
+                        />
+                      </span>
+                    </Link>
                     <span>
-                      <img
-                        className="h-6 w-auto sm:h-6 rounded-sm cursor-pointer"
-                        src="favicon/line.svg"
-                        alt="Line mu-style"
-                      />
+                      <div
+                        className="cursor-pointer"
+                        onClick={() => setDarkMode(!darkMode)}
+                      >
+                        <div>
+                          {darkMode ? (
+                            <Icon.Moon
+                              color={'#6c757d'}
+                              className="icon-nav-feather"
+                            />
+                          ) : (
+                            <Icon.Sun color={'#ffc107'} />
+                          )}
+                        </div>
+                      </div>
                     </span>
-                  </Link>
-                  <button
-                    className="button-switch"
-                    onClick={() => setDarkMode(!darkMode)}
-                  >
-                    {darkMode ? (
-                      <img
-                        className="h-6 w-auto sm:h-6 rounded-sm"
-                        src="/favicon/moon.svg"
-                        alt="dark"
-                      />
-                    ) : (
-                      <img
-                        className="h-6 w-auto sm:h-6 rounded-sm"
-                        src="/favicon/sun.svg"
-                        alt="light"
-                      />
-                    )}
-                  </button>
+                  </React.Fragment>
                 </div>
               </div>
             </div>
