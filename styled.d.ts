@@ -7,7 +7,6 @@ declare module 'styled-components' {
     colors: {
       primary: string
       secondary: string
-      tertiary: srting
       quarternary: string
       placeholder: string
       onPrimary: string

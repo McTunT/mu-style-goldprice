@@ -10,8 +10,8 @@ import { FaLine } from 'react-icons/fa'
 
 const Meta = dynamic(() => import('../Meta'))
 
-const HdColor = styled.div`
-  border-bottom: 1px solid ${(props) => props.theme.colors.borderbox};
+const Nav = styled.nav`
+  box-shadow: inset 0 -1px ${(props) => props.theme.colors.borderbox};
 `
 
 const iconStyle = {
@@ -38,7 +38,7 @@ const Layout = ({ children }) => {
     <LayoutApp>
       <animated.div style={props}>
         <ThemeProvider theme={darkMode ? Light : Dark}>
-          <HdColor className="relative border-b">
+          <Nav className="relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
               <div className="relative flex items-center justify-between h-16">
                 <div className="flex-1 items-center justify-center sm:items-stretch sm:justify-start">
@@ -58,7 +58,7 @@ const Layout = ({ children }) => {
                 <div className="flex items-center space-x-4 justify-end">
                   <React.Fragment>
                     <Link href="https://mu-style.com">
-                      <span className="px-2">
+                      <span className="px-1">
                         <Icon.ShoppingCart
                           className="icon-nav-feather"
                           style={iconStyle}
@@ -66,7 +66,7 @@ const Layout = ({ children }) => {
                       </span>
                     </Link>
                     <Link href="https://web.facebook.com/mustyleth">
-                      <span className="px-2">
+                      <span className="px-1">
                         <Icon.Facebook
                           className="icon-nav-feather"
                           style={iconStyle}
@@ -74,7 +74,7 @@ const Layout = ({ children }) => {
                       </span>
                     </Link>
                     <Link href="#">
-                      <span className="px-2">
+                      <span className="px-1">
                         <FaLine
                           className="icon-nav-fa"
                           style={{
@@ -87,7 +87,7 @@ const Layout = ({ children }) => {
                     </Link>
 
                     <div
-                      className="px-2"
+                      className="px-1"
                       onClick={() => setDarkMode(!darkMode)}
                     >
                       <div>
@@ -112,7 +112,7 @@ const Layout = ({ children }) => {
                 </div>
               </div>
             </div>
-          </HdColor>
+          </Nav>
           <GlobalStyles />
           <Meta />
           <main>{children}</main>
