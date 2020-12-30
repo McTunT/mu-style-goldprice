@@ -4,20 +4,16 @@ import { useSpring, animated } from 'react-spring'
 import { LayoutApp } from './styles'
 import { Light, Dark, GlobalStyles } from '../../styles/theme'
 import dynamic from 'next/dynamic'
-import * as Icon from 'react-feather'
 import Link from 'next/link'
-import { FaLine, FaMoon } from 'react-icons/fa'
-import { RiMoonFill } from 'react-icons/ri'
+import { FaLine, FaFacebook } from 'react-icons/fa'
+import { RiShoppingCartLine, RiMoonFill } from 'react-icons/ri'
+import { ImSun } from 'react-icons/im'
 
 const Meta = dynamic(() => import('../Meta'))
 
 const Nav = styled.nav`
   box-shadow: inset 0 -1px ${(props) => props.theme.colors.borderbox};
 `
-
-const iconStyle = {
-  stroke: '#6c757d',
-}
 
 const Layout = ({ children }) => {
   const props = useSpring({ opacity: 1, from: { opacity: 0 } })
@@ -60,17 +56,25 @@ const Layout = ({ children }) => {
                   <React.Fragment>
                     <Link href="https://mu-style.com">
                       <span className="px-1">
-                        <Icon.ShoppingCart
-                          className="icon-nav-feather"
-                          style={iconStyle}
+                        <RiShoppingCartLine
+                          className="icon-nav-fa"
+                          style={{
+                            fill: '#6c757d',
+                            width: '24px',
+                            height: '24px',
+                          }}
                         />
                       </span>
                     </Link>
                     <Link href="https://web.facebook.com/mustyleth">
                       <span className="px-1">
-                        <Icon.Facebook
-                          className="icon-nav-feather"
-                          style={iconStyle}
+                        <FaFacebook
+                          className="icon-nav-fa"
+                          style={{
+                            fill: '#6c757d',
+                            width: '24px',
+                            height: '24px',
+                          }}
                         />
                       </span>
                     </Link>
@@ -105,9 +109,13 @@ const Layout = ({ children }) => {
                           </span>
                         ) : (
                           <span>
-                            <Icon.Sun
-                              className="icon-nav-feather"
-                              color={'#ffc107'}
+                            <ImSun
+                              className="icon-nav-fa"
+                              style={{
+                                fill: '#ffc107',
+                                width: '24px',
+                                height: '24px',
+                              }}
                             />
                           </span>
                         )}
