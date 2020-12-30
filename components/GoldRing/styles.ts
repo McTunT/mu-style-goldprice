@@ -66,7 +66,7 @@ export const Layout = styled.div`
   }
 
   .gold-change-down {
-    color: #ff355e;
+    color: rgb(247, 75, 108);
   }
 
   .c-wd {

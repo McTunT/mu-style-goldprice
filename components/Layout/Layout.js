@@ -6,7 +6,8 @@ import { Light, Dark, GlobalStyles } from '../../styles/theme'
 import dynamic from 'next/dynamic'
 import * as Icon from 'react-feather'
 import Link from 'next/link'
-import { FaLine } from 'react-icons/fa'
+import { FaLine, FaMoon } from 'react-icons/fa'
+import { RiMoonFill } from 'react-icons/ri'
 
 const Meta = dynamic(() => import('../Meta'))
 
@@ -45,12 +46,12 @@ const Layout = ({ children }) => {
                   <div className="flex-shrink-0 flex items-center">
                     <img
                       className="block lg:hidden h-16 w-auto"
-                      src="/favicon/MU_Logo192x192.ico"
+                      src="favicon/MU_Logo192x192.png"
                       alt="nav-mu-style"
                     />
                     <img
                       className="hidden lg:block h-16 w-auto"
-                      src="/favicon/Mu-full-logo.ico"
+                      src="favicon/MU_Logo135x92.png"
                       alt="nav-moblie-style"
                     />
                   </div>
@@ -93,9 +94,13 @@ const Layout = ({ children }) => {
                       <div>
                         {darkMode ? (
                           <span>
-                            <Icon.Moon
-                              color={'#6c757d'}
-                              className="icon-nav-feather"
+                            <RiMoonFill
+                              className="icon-nav-fa"
+                              style={{
+                                fill: '#6c757d',
+                                width: '24px',
+                                height: '24px',
+                              }}
                             />
                           </span>
                         ) : (

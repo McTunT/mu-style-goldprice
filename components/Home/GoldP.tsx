@@ -161,7 +161,19 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
       </Layout>
     )
 
-  if (!data) return <div />
+  if (!data)
+    return (
+      <Suspense fallback={<div />}>
+        <Layout>
+          <div className="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </Layout>
+      </Suspense>
+    )
   let date = data.G965B.time
 
   return (
