@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic'
 //import Examples from '@components/Charts/Examples'
-import ParentSize from '@visx/responsive/lib/components/ParentSize'
+//import ParentSize from '@visx/responsive/lib/components/ParentSize'
 const LayoutApp = dynamic(() => import('@components/Layout'))
-const Examples = dynamic(() => import('@components/Charts/Examples'))
+//const Examples = dynamic(() => import('@components/Charts/Examples'))
 
 function GoldBid() {
   return (
