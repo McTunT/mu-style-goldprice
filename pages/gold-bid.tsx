@@ -6,9 +6,13 @@ const LayoutApp = dynamic(() => import('@components/Layout'))
 function GoldBid() {
   return (
     <LayoutApp>
-      <ParentSize>
-        {({ width, height }) => <Examples width={width} height={height} />}
-      </ParentSize>
+      <div className="mt-14">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <ParentSize>
+            {({ width }) => <Examples width={width} height={550} />}
+          </ParentSize>
+        </div>
+      </div>
     </LayoutApp>
   )
 }
