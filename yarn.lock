@@ -719,6 +719,30 @@
     classnames "^2.2.5"
     prop-types "^15.6.2"
 
+"@visx/legend@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@visx/legend/-/legend-1.3.0.tgz#c0f382708c35d009be273ba5d272605b8bcbd910"
+  integrity sha512-QcUhSn2dmUk9a4rfasvwUZ82CAwYTMg8y3sVmt360K55C4sHkx3r+y0OHfls9klHHIOvDpbryoX9UmtKymQn/A==
+  dependencies:
+    "@types/classnames" "^2.2.9"
+    "@types/react" "*"
+    "@visx/group" "1.0.0"
+    "@visx/scale" "1.3.0"
+    classnames "^2.2.5"
+    prop-types "^15.5.10"
+
+"@visx/marker@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@visx/marker/-/marker-1.3.0.tgz#8ad2c9e76006181dc449a74563cffcac5ff88e8b"
+  integrity sha512-rj/VZykundKxRrZT7HwWndPZxQUfPiJQO92vmrxnLPtJK7y7v2ZtnwlWNMNORBabSb8/MzkXNN+d2S6ckteshQ==
+  dependencies:
+    "@types/classnames" "^2.2.9"
+    "@types/react" "*"
+    "@visx/group" "1.0.0"
+    "@visx/shape" "1.3.0"
+    classnames "^2.2.5"
+    prop-types "^15.6.2"
+
 "@visx/mock-data@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@visx/mock-data/-/mock-data-1.0.0.tgz#9b3f28c8fba830b38c06cc05a5280efd3bf74449"

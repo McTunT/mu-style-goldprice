@@ -69,7 +69,7 @@ export default function Example({ height }: XYChartProps) {
           theme={theme}
           xScale={config.x}
           yScale={config.y}
-          height={Math.min(400, height)}
+          height={Math.min(600, height)}
           captureEvents={!editAnnotationLabelPosition}
           onPointerUp={(d) => {
             setAnnotationDataKey(

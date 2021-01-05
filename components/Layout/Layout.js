@@ -40,16 +40,20 @@ const Layout = ({ children }) => {
               <div className="relative flex items-center justify-between h-16">
                 <div className="flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="flex-shrink-0 flex items-center">
-                    <img
-                      className="block lg:hidden h-16 w-auto"
-                      src="favicon/MU_Logo192x192.png"
-                      alt="nav-mu-style"
-                    />
-                    <img
-                      className="hidden lg:block h-16 w-auto"
-                      src="favicon/MU_Logo135x92.png"
-                      alt="nav-moblie-style"
-                    />
+                    <Link href="/">
+                      <img
+                        className="block lg:hidden h-16 w-auto cursor-pointer"
+                        src="favicon/MU_Logo192x192.png"
+                        alt="nav-mu-style"
+                      />
+                    </Link>
+                    <Link href="/">
+                      <img
+                        className="hidden lg:block h-16 w-auto cursor-pointer"
+                        src="favicon/MU_Logo135x92.png"
+                        alt="nav-moblie-style"
+                      />
+                    </Link>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4 justify-end">

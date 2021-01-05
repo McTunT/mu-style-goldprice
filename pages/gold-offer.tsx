@@ -6,6 +6,11 @@ import dynamic from 'next/dynamic'
 // import classNames from 'classnames'
 const LayoutApp = dynamic(() => import('@components/Layout'))
 const Footer = dynamic(() => import('@components/Footer'))
+
+import BrushChart from '@components/Charts/Charts'
+
+//import BarGraph from '@components/Examples/Basic'
+import ParentSize from '@visx/responsive/lib/components/ParentSize'
 // const Examples = dynamic(() => import('@components/Examples/Example'))
 import styled from 'styled-components'
 
@@ -29,7 +34,6 @@ function GoldOffer() {
 */
   return (
     <LayoutApp>
-      <h1 style={{ color: 'red' }}>Hello goldprice offer</h1>
       {/* <div className="layout">
           {Object.values(TIMESERIES).map((option) => (
             <Button
@@ -41,8 +45,14 @@ function GoldOffer() {
               <span className="text-lookback">{option}</span>
             </Button>
           ))}
-        </div>*/}
-
+        </div>*/}{' '}
+      <div className="mt-14">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <ParentSize>
+            {({ width }) => <BrushChart width={width} height={550} />}
+          </ParentSize>
+        </div>
+      </div>
       <Suspense fallback={<div />}>
         <Footer />
       </Suspense>

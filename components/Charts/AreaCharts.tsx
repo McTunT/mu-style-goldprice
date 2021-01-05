@@ -1,11 +1,10 @@
 import React from 'react'
 import { Group } from '@visx/group'
 import { AreaClosed } from '@visx/shape'
-import { AxisLeft, AxisBottom } from '@visx/axis'
+import { AxisLeft, AxisBottom, AxisScale } from '@visx/axis'
 import { LinearGradient } from '@visx/gradient'
 import { curveMonotoneX } from '@visx/curve'
 import { AppleStock } from '@visx/mock-data/lib/mocks/appleStock'
-import { AreaChartProps } from '../../datatype/dataStructure'
 
 // Initialize some variables
 const axisColor = '#fff'
@@ -28,7 +27,7 @@ const axisLeftTickLabelProps = {
 const getDate = (d: AppleStock) => new Date(d.date)
 const getStockValue = (d: AppleStock) => d.close
 
-const AreaChart: React.FC<AreaChartProps> = ({
+export default function AreaChart({
   data,
   gradientColor,
   width,
@@ -41,12 +40,25 @@ const AreaChart: React.FC<AreaChartProps> = ({
   top,
   left,
   children,
-}) => {
+}: {
+  data: AppleStock[]
+  gradientColor: string
+  xScale: AxisScale<number>
+  yScale: AxisScale<number>
+  width: number
+  yMax: number
+  margin: { top: number; right: number; bottom: number; left: number }
+  hideBottomAxis?: boolean
+  hideLeftAxis?: boolean
+  top?: number
+  left?: number
+  children?: React.ReactNode
+}) {
   if (width < 10) return null
   return (
     <Group left={left || margin.left} top={top || margin.top}>
       <LinearGradient
-        id="gradientColor"
+        id="gradient"
         from={gradientColor}
         fromOpacity={1}
         to={gradientColor}
@@ -85,5 +97,3 @@ const AreaChart: React.FC<AreaChartProps> = ({
     </Group>
   )
 }
-
-export default AreaChart
