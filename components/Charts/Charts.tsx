@@ -20,8 +20,8 @@ const chartSeparation = 30
 const PATTERN_ID = 'brush_pattern'
 const GRADIENT_ID = 'brush_gradient'
 export const accentColor = '#f6acc8'
-export const background = '#584153'
-export const background2 = '#af8baf'
+export const background = '#F3B7B7'
+export const background2 = '#dd3333'
 const selectedBrushStyle = {
   fill: `url(#${PATTERN_ID})`,
   stroke: 'white',
@@ -145,7 +145,6 @@ function BrushChart({
           end: { y: newExtent.y1, x: newExtent.x1 },
           extent: newExtent,
         }
-
         return newState
       }
       brushRef.current.updateBrush(updater)
@@ -179,42 +178,6 @@ function BrushChart({
           yScale={stockScale}
           gradientColor={background2}
         />
-        <AreaChart
-          hideBottomAxis
-          hideLeftAxis
-          data={stock}
-          width={width}
-          yMax={yBrushMax}
-          xScale={brushDateScale}
-          yScale={brushStockScale}
-          margin={brushMargin}
-          top={topChartHeight + topChartBottomMargin + margin.top}
-          gradientColor={background2}
-        >
-          <PatternLines
-            id={PATTERN_ID}
-            height={8}
-            width={8}
-            stroke={accentColor}
-            strokeWidth={1}
-            orientation={['diagonal']}
-          />
-          <Brush
-            xScale={brushDateScale}
-            yScale={brushStockScale}
-            width={xBrushMax}
-            height={yBrushMax}
-            margin={brushMargin}
-            handleSize={8}
-            innerRef={brushRef}
-            resizeTriggerAreas={['left', 'right']}
-            brushDirection="horizontal"
-            initialBrushPosition={initialBrushPosition}
-            onChange={onBrushChange}
-            onClick={() => setFilteredStock(stock)}
-            selectedBoxStyle={selectedBrushStyle}
-          />
-        </AreaChart>
       </svg>
       <button onClick={handleClearClick}>Clear</button>&nbsp;
       <button onClick={handleResetClick}>Reset</button>

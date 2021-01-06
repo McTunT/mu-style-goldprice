@@ -42,16 +42,18 @@ const Layout = ({ children }) => {
                   <div className="flex-shrink-0 flex items-center">
                     <Link href="/">
                       <img
-                        className="block lg:hidden h-16 w-auto cursor-pointer"
+                        className="block lg:hidden h-16 w-auto"
                         src="favicon/MU_Logo192x192.png"
                         alt="nav-mu-style"
+                        style={{ cursor: 'pointer' }}
                       />
                     </Link>
                     <Link href="/">
                       <img
-                        className="hidden lg:block h-16 w-auto cursor-pointer"
+                        className="hidden lg:block h-16 w-auto"
                         src="favicon/MU_Logo135x92.png"
                         alt="nav-moblie-style"
+                        style={{ cursor: 'pointer' }}
                       />
                     </Link>
                   </div>
