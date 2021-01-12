@@ -62,7 +62,7 @@ export default function AreaChart({
         from={gradientColor}
         fromOpacity={2}
         to={gradientColor}
-        toOpacity={0.1}
+        toOpacity={0.5}
       />
       <AreaClosed<AppleStock>
         data={data}

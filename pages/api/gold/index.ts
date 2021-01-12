@@ -7,7 +7,7 @@ const cors = Cors({
   methods: ['GET'],
 })
 
-const url = 'http://27.254.77.78/rest/public/rest/goldspot'
+const url = 'https://ausiris-api.vercel.app/api/gold'
 
 const Gold = async (req: NextApiRequest, res: NextApiResponse) => {
   const response = await fetch(url, {

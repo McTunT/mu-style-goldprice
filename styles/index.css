@@ -13,9 +13,3 @@
 /* Stop purging. */
 
 /* Your own custom utilities */
-html,
-body,
-#root {
-  height: 50em;
-  line-height: 2em;
-}

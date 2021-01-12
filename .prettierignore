@@ -11,3 +11,4 @@ instrumented
 node_modules
 .gitattributes
 yarn.lock
+.ts
