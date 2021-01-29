@@ -6,16 +6,23 @@ import Cors from 'cors'
 const cors = Cors({
   methods: ['GET'],
 })
+const url1 = 'https://ausiris-api.vercel.app/api/gold'
 
-const url = 'https://ausiris-api.vercel.app/api/gold'
+//const url = 'http://27.254.3.29:5006/api/gprice'
+let username = 'aus_price'
+let password = 'Ausiris@Price'
+
+let authString = `${username}:${password}`
 
 const Gold = async (req: NextApiRequest, res: NextApiResponse) => {
-  const response = await fetch(url, {
+  const response = await fetch(url1, {
     body: null as any,
     headers: {
-      'Content-Type': 'application/json',
+      // Authorization: 'Basic ' + btoa(authString),
+      'Content-type': 'application/json',
+      Accept: 'application/json',
+      'Accept-Charset': 'utf-8',
     },
-
     method: 'GET',
   })
 

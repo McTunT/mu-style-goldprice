@@ -1,82 +1,122 @@
-import React from 'react'
-import { Bar } from '@visx/shape'
-import {
-  GradientDarkgreenGreen,
-  GradientLightgreenGreen,
-  GradientOrangeRed,
-  GradientPinkBlue,
-  GradientPinkRed,
-  GradientPurpleOrange,
-  GradientPurpleRed,
-  GradientTealBlue,
-  RadialGradient,
-  LinearGradient,
-} from '@visx/gradient'
+import React, { useMemo } from 'react'
+import { Group } from '@visx/group'
+import { LinePath } from '@visx/shape'
+import { scaleTime, scaleLinear } from '@visx/scale'
+import ParentSize from '@visx/responsive/lib/components/ParentSize'
+import { data1 } from '../../lib/datagraph'
+import * as Curve from '@visx/curve'
 
-const defaultMargin = {
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
+export interface Data1 {
+  date: string
+  offer965: number
 }
 
-const Gradients: React.FC<{ id: string }>[] = [
-  GradientPinkRed,
-  ({ id }) => <RadialGradient id={id} from="#55bdd5" to="#4f3681" r="80%" />,
-  GradientOrangeRed,
-  GradientPinkBlue,
-  ({ id }) => (
-    <LinearGradient id={id} from="#351CAB" to="#621A61" rotate="-45" />
-  ),
-  GradientLightgreenGreen,
-  GradientPurpleOrange,
-  GradientTealBlue,
-  GradientPurpleRed,
-  GradientDarkgreenGreen,
-]
+export const background = 'transparent'
 
-export type GradientProps = {
+const size = data1.length
+const tranfromData = data1.slice(size - 30)
+
+// data accessors
+const xAccessor = (d: Data1) => new Date(d.date).valueOf()
+const yAccessor = (d: Data1) => d.offer965
+
+type Props = {
   width: number
   height: number
-  margin?: typeof defaultMargin
+  margin?: { top: number; right: number; bottom: number; left: number }
 }
 
-export default function Example({
+const Lines = ({
   width,
   height,
-  margin = defaultMargin,
-}: GradientProps) {
-  const numColumns = width > 600 ? 5 : 2
-  const numRows = Gradients.length / numColumns
-  const columnWidth = Math.max(width / numColumns, 0)
-  const rowHeight = Math.max((height - margin.bottom) / numRows, 0)
+  margin = { top: 0, right: 0, bottom: 0, left: 0 },
+}: Props) => {
+  if (width < 10) return null
+
+  // bounds
+  const yMax = height - margin.top - margin.bottom
+  const xMax = width - margin.left - margin.right
+
+  // a scales
+  const timeScale = useMemo(
+    () =>
+      scaleTime({
+        range: [0, xMax],
+        domain: [
+          Math.min(...tranfromData.map(xAccessor)),
+          Math.max(...tranfromData.map(xAccessor)),
+        ],
+      }),
+    []
+  )
+
+  const offerScale = useMemo(
+    () =>
+      scaleLinear({
+        range: [yMax, 0],
+        domain: [
+          Math.min(...tranfromData.map(yAccessor)),
+          Math.max(...tranfromData.map(yAccessor)),
+        ],
+        nice: true,
+      }),
+    []
+  )
 
   return (
     <svg width={width} height={height}>
-      {Gradients.map((Gradient, index) => {
-        const columnIndex = index % numColumns
-        const rowIndex = Math.floor(index / numColumns)
-        const id = `visx-gradient-demo-${index}-${rowIndex}${columnIndex}`
-
-        return (
-          <React.Fragment key={id}>
-            {/** Like SVG <defs />, Gradients are rendered with an id */}
-            <Gradient id={id} />
-
-            {/** And are then referenced for a style attribute. */}
-            <Bar
-              fill={`url(#${id})`}
-              x={columnIndex * columnWidth}
-              y={rowIndex * rowHeight}
-              width={columnWidth}
-              height={rowHeight}
-              stroke="#ffffff"
-              strokeWidth={8}
-              rx={14}
-            />
-          </React.Fragment>
-        )
-      })}
+      <Group left={margin.left} top={margin.top}>
+        <LinePath<Data1>
+          data={data1}
+          strokeWidth={2}
+          x={(d) => timeScale(xAccessor(d)) ?? 0}
+          y={(d) => offerScale(yAccessor(d)) ?? 0}
+          stroke="#dd3333"
+          shapeRendering="geometricPrecision"
+          curve={Curve.curveCatmullRomOpen}
+        />
+      </Group>
     </svg>
+  )
+}
+
+export type ResponsiveProps = {
+  width: number
+  height: number
+}
+
+export default function Example({ width, height }: ResponsiveProps) {
+  return width < 20 || height < 20 ? null : (
+    <div className="app-tiny" style={{ width, height }}>
+      <div className="app-content">
+        <div className="app-graph">
+          <ParentSize className="graph-container" debounceTime={10}>
+            {({ width: visWidth, height: visHeight }) => (
+              <Lines width={visWidth} height={visHeight} />
+            )}
+          </ParentSize>
+        </div>
+      </div>
+
+      <style jsx>{`
+        .app-tiny {
+          display: flex;
+        }
+        .app-nav {
+          display: flex;
+        }
+
+        .app-content {
+          display: flex;
+          flex: 1;
+        }
+
+        .app-graph {
+          display: flex;
+          flex: 1;
+          overflow: hidden;
+        }
+      `}</style>
+    </div>
   )
 }

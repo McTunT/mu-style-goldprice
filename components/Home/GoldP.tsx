@@ -5,7 +5,8 @@ import { IntlFormatNumber } from '../../lib/function'
 import { Layout } from './styles'
 import useStickySWR from '../../lib/useStickySWR'
 
-const GoldRing = dynamic(() => import('@components/GoldRing'))
+const GoldPrice = dynamic(() => import('@components/Gold'))
+const TopGold = dynamic(() => import('@components/Gold/TopGoldPrice'))
 
 export async function getStaticProps() {
   const data = await fetcher('/api/gold')
@@ -139,6 +140,13 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
     }
   }
 
+  const G1BBid = () => {
+    if (typeof data !== 'undefined') {
+      let G = data.G965B.bid_asso
+      return IntlFormatNumber(G)
+    }
+  }
+
   const Gold06Grams = G06Gram()
   const GoldOneGram = OneGram()
   const GoldHalfDimes = GHDimes()
@@ -153,6 +161,7 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
   const Jiwelry2Dimes = J2Dimes()
   const Jiwelry1Baht = J1Baht()
   const Jiwelry2Baht = J2Baht()
+  const Gold1BathBid = G1BBid()
 
   if (error)
     return (
@@ -179,7 +188,8 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
   return (
     <React.Fragment>
       <Suspense fallback={<div />}>
-        <GoldRing
+        <TopGold topGold1BahtOffer={Gold1Baht} topGold1Bahtbid={Gold1BathBid} />
+        <GoldPrice
           goldDate={date}
           gold06gram={Gold06Grams}
           gold1Gram={GoldOneGram}

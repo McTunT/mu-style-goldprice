@@ -1,4 +1,8 @@
 import { useCallback, useMemo, useState, FC } from 'react'
+import { lightTheme, darkTheme, XYChartTheme } from '@visx/xychart'
+import { GlyphProps } from '@visx/xychart/lib/types'
+import { GlyphCross, GlyphDot, GlyphStar } from '@visx/glyph'
+import { curveLinear, curveStep, curveCardinal } from '@visx/curve'
 
 import { data1 } from '../../../lib/datagraph'
 

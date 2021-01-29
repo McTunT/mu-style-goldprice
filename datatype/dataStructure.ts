@@ -20,6 +20,11 @@ export declare interface GoldProps {
   jiwelry2Baht: ReactNode
 }
 
+export declare interface TopGoldPriceProps {
+  topGold1BahtOffer: ReactNode
+  topGold1Bahtbid: ReactNode
+}
+
 export declare interface AreaChartProps {
   data: AppleStock[]
   gradientColor: string
@@ -30,6 +35,40 @@ export declare interface AreaChartProps {
   margin: { top: number; right: number; bottom: number; left: number }
   hideBottomAxis?: boolean
   hideLeftAxis?: boolean
+  top?: number
+  left?: number
+  children?: ReactNode
+}
+
+export declare interface offerProps {
+  date: string
+  offer965: number
+}
+
+export declare interface bidProps {
+  date: string
+  bid965: number
+}
+
+export declare interface offerTinyLineProps {
+  data: offerProps[]
+  gradientColor: string
+  xTimeScale: AxisScale<number>
+  yValuesScale: AxisScale<number>
+  width: number
+  margin: { top: number; right: number; bottom: number; left: number }
+  top?: number
+  left?: number
+  children?: ReactNode
+}
+
+export declare interface bidTinyLineProps {
+  data: bidProps[]
+  gradientColor: string
+  xTimeScale: AxisScale<number>
+  yValuesScale: AxisScale<number>
+  width: number
+  margin: { top: number; right: number; bottom: number; left: number }
   top?: number
   left?: number
   children?: ReactNode

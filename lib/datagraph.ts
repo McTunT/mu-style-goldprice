@@ -43,7 +43,7 @@ export const data1 = [
     date: '2018-01-09',
     time: '17:00:00',
     bid965: 20095,
-    offer965: 20060,
+    offer965: 20099,
     bid9999: 20815,
     offer9999: 20785,
     bidgta: 20100,
