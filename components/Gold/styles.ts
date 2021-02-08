@@ -118,4 +118,23 @@ export const Layout = styled.div`
       font-weight: 700;
     }
   }
+
+  @media (max-width: 768px) {
+    .c-flex {
+      flex-direction: column;
+    }
+
+    .goldpice-mu-style {
+      margin-top: 40px;
+      margin-left: 16px;
+      margin-right: 16px;
+      width: auto;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .c-wd-gold {
+      font-size: 12px;
+    }
+  }
 `

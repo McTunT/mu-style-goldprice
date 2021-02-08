@@ -14,11 +14,11 @@ const TopGoldPrice: FC<TopGoldPriceProps> = ({
   return (
     <Layout>
       <div className="relative mt-12">
-        <div className="md:max-w-3xl mx-auto px4 sm:px6 rounded-lg flex">
-          <div className="goldpice-mu-style mr-10">
+        <div className="md:max-w-3xl mx-auto px4 sm:px6 rounded-lg flex c-flex">
+          <div className="goldpice-mu-style mr-10 ">
             <Link href="#">
-              <div className="goldpice-mu-style-detail">
-                <div className="flex flex-wrap text-sm c-wd">
+              <div className="goldpice-mu-style-detail ">
+                <div className="flex flex-wrap text-sm c-wd c-wd-gold">
                   <span>ราคาทองสมาคม 96.5% ขายออก</span>
                 </div>
                 <div className="text-2xl blod flex flex-wrap c-wd">
@@ -38,8 +38,8 @@ const TopGoldPrice: FC<TopGoldPriceProps> = ({
 
           <div className="goldpice-mu-style ">
             <Link href="#">
-              <div className="goldpice-mu-style-detail">
-                <div className="flex flex-wrap text-sm c-wd ">
+              <div className="goldpice-mu-style-detail ">
+                <div className="flex flex-wrap text-sm c-wd c-wd-gold">
                   <span>ราคาทองสมาคม 96.5% รับซื้อ</span>
                 </div>
                 <div className="text-2xl blod flex flex-wrap c-wd ">
