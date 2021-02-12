@@ -105,12 +105,10 @@ export default function Example({ width, height }: ResponsiveProps) {
         .app-nav {
           display: flex;
         }
-
         .app-content {
           display: flex;
           flex: 1;
         }
-
         .app-graph {
           display: flex;
           flex: 1;

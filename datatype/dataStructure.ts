@@ -21,8 +21,10 @@ export declare interface GoldProps {
 }
 
 export declare interface TopGoldPriceProps {
-  topGold1BahtOffer: ReactNode
-  topGold1Bahtbid: ReactNode
+  G1BahtOffer: ReactNode
+  G1Bahtbid: ReactNode
+  G1BahtOfferChange: ReactNode
+  G1BahtBidhange: ReactNode
 }
 
 export declare interface AreaChartProps {

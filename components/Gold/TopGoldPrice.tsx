@@ -8,12 +8,14 @@ import { TopGoldPriceProps } from '@datatypes/dataStructure'
 const Tiny = dynamic(() => import('@components/Examples/Gradients'))
 
 const TopGoldPrice: FC<TopGoldPriceProps> = ({
-  topGold1BahtOffer,
-  topGold1Bahtbid,
+  G1BahtOffer,
+  G1Bahtbid,
+  G1BahtBidhange,
+  G1BahtOfferChange,
 }) => {
   return (
     <Layout>
-      <div className="relative mt-12">
+      <div className="relative gptop">
         <div className="md:max-w-3xl mx-auto px4 sm:px6 rounded-lg flex c-flex">
           <div className="goldpice-mu-style mr-10 ">
             <Link href="#">
@@ -22,10 +24,10 @@ const TopGoldPrice: FC<TopGoldPriceProps> = ({
                   <span>ราคาทองสมาคม 96.5% ขายออก</span>
                 </div>
                 <div className="text-2xl blod flex flex-wrap c-wd">
-                  <span>{topGold1BahtOffer} บาท</span>
+                  <span>{G1BahtOffer} บาท</span>
                 </div>
                 <div className="text-sm blod flex flex-wrap gold-change-down">
-                  <span>-400 บาท</span>
+                  <span>{G1BahtOfferChange} บาท</span>
                 </div>
                 <div className="chart-mu-style">
                   <ParentSize>
@@ -43,10 +45,10 @@ const TopGoldPrice: FC<TopGoldPriceProps> = ({
                   <span>ราคาทองสมาคม 96.5% รับซื้อ</span>
                 </div>
                 <div className="text-2xl blod flex flex-wrap c-wd ">
-                  <span>{topGold1Bahtbid} บาท</span>
+                  <span>{G1Bahtbid} บาท</span>
                 </div>
                 <div className="text-sm blod flex flex-wrap gold-change-up">
-                  <span>+400 บาท</span>
+                  <span>{G1BahtBidhange} บาท</span>
                 </div>
                 <div className="chart-mu-style">
                   <ParentSize className="ml-4">

@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
 export const Layout = styled.div`
+  .gptop {
+    margin-top: 3rem;
+  }
+
   .goldpice-mu-style-inner {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -119,15 +123,16 @@ export const Layout = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
+    .gptop {
+      margin-top: 0.5rem;
+    }
     .c-flex {
       flex-direction: column;
     }
 
     .goldpice-mu-style {
-      margin-top: 40px;
-      margin-left: 16px;
-      margin-right: 16px;
+      margin: 40px 10px 0px 10px;
       width: auto;
     }
   }
@@ -135,6 +140,14 @@ export const Layout = styled.div`
   @media (max-width: 400px) {
     .c-wd-gold {
       font-size: 12px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .goldpice-mu-style {
+      margin-left: 20px;
+      margin-right: 16px;
+      width: auto;
     }
   }
 `

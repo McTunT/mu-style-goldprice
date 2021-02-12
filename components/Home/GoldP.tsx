@@ -8,20 +8,22 @@ import useStickySWR from '../../lib/useStickySWR'
 const GoldPrice = dynamic(() => import('@components/Gold'))
 const TopGold = dynamic(() => import('@components/Gold/TopGoldPrice'))
 
-export async function getStaticProps() {
-  const data = await fetcher('/api/gold')
-  return { props: { initalData: data } }
-}
-
 interface PropsGold {
   initalData?: string
 }
 
-const GoldP: React.FC<PropsGold> = ({ initalData }) => {
+const GoldP: React.FC<PropsGold> = () => {
   const { data, error } = useStickySWR('/api/gold', fetcher, {
-    initalData,
     refreshInterval: 0,
   } as any)
+
+  const { data: GYes, error: er } = useStickySWR(
+    '/api/gold/yesterday',
+    fetcher,
+    {
+      refreshInterval: 0,
+    } as any
+  )
 
   const G06Gram = () => {
     if (typeof data !== 'undefined') {
@@ -147,6 +149,15 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
     }
   }
 
+  const G1BOfferChange = () => {
+    if (typeof (GYes && data) !== 'undefined') {
+      const GY = GYes.G965B.offer_asso
+      const G = data.G965B.offer_asso
+      const Change = G - GY
+      return IntlFormatNumber(Change)
+    }
+  }
+
   const Gold06Grams = G06Gram()
   const GoldOneGram = OneGram()
   const GoldHalfDimes = GHDimes()
@@ -162,6 +173,8 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
   const Jiwelry1Baht = J1Baht()
   const Jiwelry2Baht = J2Baht()
   const Gold1BathBid = G1BBid()
+
+  const GoldYesterdayoffer = G1BOfferChange()
 
   if (error)
     return (
@@ -183,12 +196,18 @@ const GoldP: React.FC<PropsGold> = ({ initalData }) => {
         </Layout>
       </Suspense>
     )
+
   let date = data.G965B.time
 
   return (
     <React.Fragment>
       <Suspense fallback={<div />}>
-        <TopGold topGold1BahtOffer={Gold1Baht} topGold1Bahtbid={Gold1BathBid} />
+        <TopGold
+          G1BahtOffer={Gold1Baht}
+          G1Bahtbid={Gold1BathBid}
+          G1BahtBidhange={Gold1BathBid}
+          G1BahtOfferChange={GoldYesterdayoffer}
+        />
         <GoldPrice
           goldDate={date}
           gold06gram={Gold06Grams}
