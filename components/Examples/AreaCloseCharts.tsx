@@ -91,27 +91,6 @@ const Render: React.FC<XYChartProps> = ({
           strokeWidth={1}
           fill="#dd3333"
         />
-        {/** 
-        <Tooltip
-          snapTooltipToDatumX
-          snapTooltipToDatumY
-          showVerticalCrosshair
-          showSeriesGlyphs
-          renderTooltip={({ tooltipData, colorScale }) => (
-            <div>
-              <div
-                style={{
-                  color: colorScale?.(tooltipData?.nearestDatum?.key || ''),
-                }}
-              >
-                {tooltipData?.nearestDatum?.key}
-              </div>{' '}
-              {YAcc(tooltipData?.nearestDatum?.datum)}
-              {', '}
-              {XAcc(tooltipData?.nearestDatum?.datum)}
-            </div>
-          )}
-        />*/}
       </Group>
     </svg>
   )

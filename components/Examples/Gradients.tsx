@@ -1,10 +1,11 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useCallback, useEffect, useState, FC } from 'react'
 import { Group } from '@visx/group'
 import { LinePath } from '@visx/shape'
 import { scaleTime, scaleLinear } from '@visx/scale'
 import ParentSize from '@visx/responsive/lib/components/ParentSize'
-import { data1 } from '../../lib/datagraph'
 import * as Curve from '@visx/curve'
+import useDataGraph from '../../api-hooks/useDataGraph'
+//import { data1 } from '../../lib/datagraph'
 
 export interface Data1 {
   date: string
@@ -13,25 +14,40 @@ export interface Data1 {
 
 export const background = 'transparent'
 
-const size = data1.length
-const tranfromData = data1.slice(size - 30)
-
-// data accessors
-const xAccessor = (d: Data1) => new Date(d.date).valueOf()
-const yAccessor = (d: Data1) => d.offer965
-
 type Props = {
   width: number
   height: number
   margin?: { top: number; right: number; bottom: number; left: number }
 }
 
-const Lines = ({
+const Lines: FC<Props> = ({
   width,
   height,
   margin = { top: 0, right: 0, bottom: 0, left: 0 },
-}: Props) => {
+}) => {
   if (width < 10) return null
+
+  const { data: goldprice, error: err } = useDataGraph()
+  const [offer, setOffer] = useState([])
+  /*
+  useEffect(() => {
+    if (typeof goldprice !== 'undefined') {
+      const size = goldprice.length
+      const tranfromData = goldprice.slice(size - 30, size)
+      setOffer(tranfromData)
+    }
+  }, [goldprice])
+*/
+
+  useEffect(() => {
+    if (typeof goldprice !== 'undefined') {
+      setOffer(goldprice)
+    }
+  }, [goldprice])
+
+  // data accessors
+  const xAccessor = (d: Data1) => new Date(d.date).valueOf()
+  const yAccessor = (d: Data1) => d.offer965
 
   // bounds
   const yMax = height - margin.top - margin.bottom
@@ -42,10 +58,7 @@ const Lines = ({
     () =>
       scaleTime({
         range: [0, xMax],
-        domain: [
-          Math.min(...tranfromData.map(xAccessor)),
-          Math.max(...tranfromData.map(xAccessor)),
-        ],
+        domain: [Math.min(), Math.max(...offer.map(xAccessor))],
       }),
     []
   )
@@ -55,28 +68,32 @@ const Lines = ({
       scaleLinear({
         range: [yMax, 0],
         domain: [
-          Math.min(...tranfromData.map(yAccessor)),
-          Math.max(...tranfromData.map(yAccessor)),
+          Math.min(...offer.map(yAccessor)),
+          Math.max(...offer.map(yAccessor)),
         ],
         nice: true,
       }),
     []
   )
 
+  if (!goldprice) return <div></div>
+
   return (
-    <svg width={width} height={height}>
-      <Group left={margin.left} top={margin.top}>
-        <LinePath<Data1>
-          data={data1}
-          strokeWidth={2}
-          x={(d) => timeScale(xAccessor(d)) ?? 0}
-          y={(d) => offerScale(yAccessor(d)) ?? 0}
-          stroke="#dd3333"
-          shapeRendering="geometricPrecision"
-          curve={Curve.curveCatmullRomOpen}
-        />
-      </Group>
-    </svg>
+    <div>
+      <svg width={width} height={height}>
+        <Group left={margin.left} top={margin.top}>
+          <LinePath<Data1>
+            data={offer}
+            strokeWidth={2}
+            x={(d) => timeScale(xAccessor(d)) ?? 0}
+            y={(d) => offerScale(yAccessor(d)) ?? 0}
+            stroke="#dd3333"
+            shapeRendering="geometricPrecision"
+            curve={Curve.curveCatmullRomOpen}
+          />
+        </Group>
+      </svg>
+    </div>
   )
 }
 
@@ -97,7 +114,6 @@ export default function Example({ width, height }: ResponsiveProps) {
           </ParentSize>
         </div>
       </div>
-
       <style jsx>{`
         .app-tiny {
           display: flex;

@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, ReactElement } from 'react'
 import fetcher from '../../lib/fetch'
 import dynamic from 'next/dynamic'
 import { IntlFormatNumber } from '../../lib/function'
@@ -9,10 +9,10 @@ const GoldPrice = dynamic(() => import('@components/Gold'))
 const TopGold = dynamic(() => import('@components/Gold/TopGoldPrice'))
 
 interface PropsGold {
-  initalData?: string
+  datagraph: ReactElement
 }
 
-const GoldP: React.FC<PropsGold> = () => {
+const GoldP: React.FC<PropsGold> = ({ datagraph }) => {
   const { data, error } = useStickySWR('/api/gold', fetcher, {
     refreshInterval: 0,
   } as any)
@@ -142,10 +142,10 @@ const GoldP: React.FC<PropsGold> = () => {
     }
   }
 
-  const G1BBid = () => {
+  const G1b99offer = () => {
     if (typeof data !== 'undefined') {
-      let G = data.G965B.bid_asso
-      return IntlFormatNumber(G)
+      const G99 = data.G9999B.offer
+      return IntlFormatNumber(G99)
     }
   }
 
@@ -153,6 +153,15 @@ const GoldP: React.FC<PropsGold> = () => {
     if (typeof (GYes && data) !== 'undefined') {
       const GY = GYes.G965B.offer_asso
       const G = data.G965B.offer_asso
+      const Change = G - GY
+      return IntlFormatNumber(Change)
+    }
+  }
+
+  const G199BChange = () => {
+    if (typeof (GYes && data) !== 'undefined') {
+      const GY = GYes.G9999B.offer
+      const G = data.G9999B.offer
       const Change = G - GY
       return IntlFormatNumber(Change)
     }
@@ -172,8 +181,9 @@ const GoldP: React.FC<PropsGold> = () => {
   const Jiwelry2Dimes = J2Dimes()
   const Jiwelry1Baht = J1Baht()
   const Jiwelry2Baht = J2Baht()
-  const Gold1BathBid = G1BBid()
 
+  const Gold1G99Offer = G1b99offer()
+  const Gold1B99Change = G199BChange()
   const GoldYesterdayoffer = G1BOfferChange()
 
   if (error)
@@ -200,13 +210,14 @@ const GoldP: React.FC<PropsGold> = () => {
   let date = data.G965B.time
 
   return (
-    <React.Fragment>
+    <>
       <Suspense fallback={<div />}>
         <TopGold
           G1BahtOffer={Gold1Baht}
-          G1Bahtbid={Gold1BathBid}
-          G1BahtBidhange={Gold1BathBid}
+          G199BahtOffer={Gold1G99Offer}
           G1BahtOfferChange={GoldYesterdayoffer}
+          G199BahtOfferChange={Gold1B99Change}
+          datagraph={datagraph}
         />
         <GoldPrice
           goldDate={date}
@@ -226,7 +237,7 @@ const GoldP: React.FC<PropsGold> = () => {
           jiwelry2Baht={Jiwelry2Baht}
         />
       </Suspense>
-    </React.Fragment>
+    </>
   )
 }
 

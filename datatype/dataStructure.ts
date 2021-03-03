@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, ReactElement, ReactChildren } from 'react'
 import { AxisScale } from '@visx/axis'
 import { AppleStock } from '@visx/mock-data/lib/mocks/appleStock'
 
@@ -22,9 +22,10 @@ export declare interface GoldProps {
 
 export declare interface TopGoldPriceProps {
   G1BahtOffer: ReactNode
-  G1Bahtbid: ReactNode
+  G199BahtOffer: ReactNode
   G1BahtOfferChange: ReactNode
-  G1BahtBidhange: ReactNode
+  G199BahtOfferChange: ReactNode
+  datagraph: ReactElement
 }
 
 export declare interface AreaChartProps {
