@@ -4,13 +4,13 @@ import React, {
   ReactElement,
   ReactChildren,
   Suspense,
+  ReactNode,
 } from 'react'
 import { scaleTime, scaleLinear } from '@visx/scale'
 import { Group } from '@visx/group'
 import { LinePath } from '@visx/shape'
 import ParentSize from '@visx/responsive/lib/components/ParentSize'
 import * as Curve from '@visx/curve'
-import { InferGetStaticPropsType } from 'next'
 
 export interface Dataprice {
   date: string
@@ -44,14 +44,12 @@ const OfferTiny = <T extends {}>(props: Props<T>) => {
   }
 
   const size = sie(datagraph)
+
   const tran = (data: any) => {
     return data.slice(size - 30, size)
   }
 
   const tranfromData = tran(datagraph)
-
-  //const size = datagraph.length
-  //const tranfromData = datagraph.slice(size - 30, size)
 
   // bounds
   const yMax = height - margin.top - margin.bottom
