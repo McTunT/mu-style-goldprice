@@ -6,6 +6,7 @@ import ParentSize from '@visx/responsive/lib/components/ParentSize'
 import { TopGoldPriceProps } from '@datatypes/dataStructure'
 
 const Offer = dynamic(() => import('@components/TinyChart/OfferTiny'))
+const Bid = dynamic(() => import('@components/TinyChart/BidTiny'))
 
 const TopGoldPrice: FC<TopGoldPriceProps> = ({
   G1BahtOffer,
@@ -22,7 +23,7 @@ const TopGoldPrice: FC<TopGoldPriceProps> = ({
             <Link href="#">
               <div className="goldpice-mu-style-detail ">
                 <div className="flex flex-wrap text-sm c-wd c-wd-gold">
-                  <span>ราคาทองสมาคม 96.5% ขายออก</span>
+                  <span>ราคาทองคำสมาคม 96.5% ขายออก</span>
                 </div>
                 <div className="text-2xl blod flex flex-wrap c-wd">
                   <span>{G1BahtOffer} บาท</span>
@@ -36,10 +37,10 @@ const TopGoldPrice: FC<TopGoldPriceProps> = ({
                     {G1BahtOfferChange} บาท
                   </span>
                 </div>
-                <div className="chart-mu-style mr-4">
+                <div className="chart-mu-style mr-4 md:mr-12">
                   <ParentSize>
                     {({ width, height }) => (
-                      <Offer width={135} height={50} datagraph={datagraph} />
+                      <Bid width={135} height={50} databid={datagraph} />
                     )}
                   </ParentSize>
                 </div>
@@ -51,7 +52,7 @@ const TopGoldPrice: FC<TopGoldPriceProps> = ({
             <Link href="#">
               <div className="goldpice-mu-style-detail ">
                 <div className="flex flex-wrap text-sm c-wd c-wd-gold">
-                  <span>ราคาทอง 99.99% ขายออก</span>
+                  <span>ราคาทองคำสมาคม 96.5% รับซื้อ</span>
                 </div>
                 <div className="text-2xl blod flex flex-wrap c-wd ">
                   <span>{G199BahtOffer} บาท</span>
@@ -65,8 +66,8 @@ const TopGoldPrice: FC<TopGoldPriceProps> = ({
                     {G199BahtOfferChange} บาท
                   </span>
                 </div>
-                <div className="chart-mu-style">
-                  <ParentSize className="ml-4">
+                <div className="chart-mu-style mr-1 md:mr-8">
+                  <ParentSize>
                     {({ width, height }) => (
                       <Offer width={135} height={50} datagraph={datagraph} />
                     )}

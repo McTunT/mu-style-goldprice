@@ -133,7 +133,7 @@ export const Layout = styled.div`
 
     .goldpice-mu-style {
       margin: 40px 10px 0px 10px;
-      width: auto;
+      width: auto !important;
     }
   }
 
@@ -147,7 +147,7 @@ export const Layout = styled.div`
     .goldpice-mu-style {
       margin-left: 20px;
       margin-right: 16px;
-      width: auto;
+      width: 100%;
     }
   }
 `

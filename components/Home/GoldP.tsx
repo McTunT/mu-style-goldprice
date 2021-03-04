@@ -144,7 +144,7 @@ const GoldP: React.FC<PropsGold> = ({ datagraph }) => {
 
   const G1b99offer = () => {
     if (typeof data !== 'undefined') {
-      const G99 = data.G9999B.offer
+      const G99 = data.G965B.bid_asso
       return IntlFormatNumber(G99)
     }
   }
@@ -158,10 +158,10 @@ const GoldP: React.FC<PropsGold> = ({ datagraph }) => {
     }
   }
 
-  const G199BChange = () => {
+  const G9999USChange = () => {
     if (typeof (GYes && data) !== 'undefined') {
-      const GY = GYes.G9999B.offer
-      const G = data.G9999B.offer
+      const GY = GYes.G965B.bid_asso
+      const G = data.G965B.bid_asso
       const Change = G - GY
       return IntlFormatNumber(Change)
     }
@@ -183,7 +183,7 @@ const GoldP: React.FC<PropsGold> = ({ datagraph }) => {
   const Jiwelry2Baht = J2Baht()
 
   const Gold1G99Offer = G1b99offer()
-  const Gold1B99Change = G199BChange()
+  const Gold1B99Change = G9999USChange()
   const GoldYesterdayoffer = G1BOfferChange()
 
   if (error)
