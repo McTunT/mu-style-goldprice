@@ -7,11 +7,10 @@ import dynamic from 'next/dynamic'
 const LayoutApp = dynamic(() => import('@components/Layout'))
 const Footer = dynamic(() => import('@components/Footer'))
 
-import BrushChart from '@components/Charts/Charts'
-import Basic from '@components/Examples/AreaCloseCharts'
+//import Basic from '@components/Examples/AreaCloseCharts'
 
 //import BarGraph from '@components/Examples/Basic'
-import ParentSize from '@visx/responsive/lib/components/ParentSize'
+//import ParentSize from '@visx/responsive/lib/components/ParentSize'
 // const Examples = dynamic(() => import('@components/Examples/Example'))
 import styled from 'styled-components'
 
@@ -48,11 +47,7 @@ function GoldOffer() {
           ))}
         </div>*/}{' '}
       <div className="mt-14">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <ParentSize>
-            {({ width, height }) => <Basic width={width} height={450} />}
-          </ParentSize>
-        </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6"></div>
       </div>
       <Suspense fallback={<div />}>
         <Footer />
