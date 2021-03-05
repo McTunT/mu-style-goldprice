@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import fetch from 'node-fetch'
-import { endpoints } from '../../../lib/endpoints'
+import { endpoints } from 'lib/endpoints'
 import https from 'https'
 
 const datagraph = endpoints.datagraph

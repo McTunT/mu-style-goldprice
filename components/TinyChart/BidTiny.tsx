@@ -4,21 +4,9 @@ import { Group } from '@visx/group'
 import { LinePath } from '@visx/shape'
 import ParentSize from '@visx/responsive/lib/components/ParentSize'
 import * as Curve from '@visx/curve'
+import { bidProps, BidTinyProps } from '@datatypes/dataStructure'
 
-export interface Dataprice {
-  date: string
-  bid965: Number
-}
-export const background = 'transparent'
-
-export interface Props<T> {
-  databid: ReactElement
-  width: number
-  height: number
-  margin?: { top: number; right: number; bottom: number; left: number }
-}
-
-const BidTiny = <T extends {}>(props: Props<T>) => {
+const BidTiny = <T extends {}>(props: BidTinyProps<T>) => {
   const {
     width,
     height,
@@ -29,19 +17,17 @@ const BidTiny = <T extends {}>(props: Props<T>) => {
   if (width < 10) return null
 
   // data accessors
-  const xAccessor = (d: Dataprice) => new Date(d.date).valueOf()
-  const yAccessor = (d: Dataprice) => d.bid965
+  const xAccessor = (d: bidProps) => new Date(d.date).valueOf()
+  const yAccessor = (d: bidProps) => d.bid965
 
+  // timeserreis 30 days
   const sie = (data: any) => {
     return data.length
   }
-
   const size = sie(databid)
-
   const tran = (data: any) => {
     return data.slice(size - 30, size)
   }
-
   const tranfromData = tran(databid)
 
   // bounds
@@ -80,7 +66,7 @@ const BidTiny = <T extends {}>(props: Props<T>) => {
     <div>
       <svg width={width} height={height}>
         <Group left={margin.left} top={margin.top}>
-          <LinePath<Dataprice>
+          <LinePath<bidProps>
             data={databid as any}
             strokeWidth={2}
             x={(d) => timeScale(xAccessor(d)) ?? 0}

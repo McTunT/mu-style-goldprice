@@ -1,9 +1,8 @@
 import React, { Suspense } from 'react'
-import { GoldProps } from '@datatypes/dataStructure'
-
 import { Layout } from './styles'
 import dayjs from 'dayjs'
 import dynamic from 'next/dynamic'
+import { GoldProps } from '@datatypes/dataStructure'
 
 const Footer = dynamic(() => import('@components/Footer'))
 

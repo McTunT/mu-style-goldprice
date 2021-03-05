@@ -84,7 +84,7 @@ const Layout = ({ children }) => {
                         />
                       </span>
                     </Link>
-                    <Link href="#">
+                    <Link href="https://page.line.me/?openerPlatform=native&openerKey=urlSchema:external&accountId=115cnhgi&fbclid=IwAR1tINMFdpCIThbH6z0MKTAZqbGehRrnjL59W364JtNGggv6KM4n2Cmdke8">
                       <span className="px-1">
                         <FaLine
                           className="icon-nav-fa"

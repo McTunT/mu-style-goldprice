@@ -16,7 +16,7 @@ import { Group } from '@visx/group'
 import 'dayjs/locale/th'
 dayjs.locale('th')
 
-import { data1 } from '../../lib/datagraph'
+import { data1 } from 'lib/datagraph'
 
 export interface Data1 {
   date: string

@@ -18,6 +18,7 @@
     "paths": {
       "@components/*": ["components/*"],
       "@datatypes/*": ["datatype/*"],
+      "@lip":["lip/*"]
     }
   },
   "exclude": ["node_modules"],

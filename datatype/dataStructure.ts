@@ -1,6 +1,4 @@
-import { ReactNode, ReactElement, ReactChildren } from 'react'
-import { AxisScale } from '@visx/axis'
-import { AppleStock } from '@visx/mock-data/lib/mocks/appleStock'
+import { ReactNode, ReactElement } from 'react'
 
 export declare interface GoldProps {
   goldDate: string
@@ -28,21 +26,6 @@ export declare interface TopGoldPriceProps {
   datagraph: ReactElement
 }
 
-export declare interface AreaChartProps {
-  data: AppleStock[]
-  gradientColor: string
-  xScale: AxisScale<number>
-  yScale: AxisScale<number>
-  width: number
-  yMax: number
-  margin: { top: number; right: number; bottom: number; left: number }
-  hideBottomAxis?: boolean
-  hideLeftAxis?: boolean
-  top?: number
-  left?: number
-  children?: ReactNode
-}
-
 export declare interface offerProps {
   date: string
   offer965: number
@@ -53,26 +36,16 @@ export declare interface bidProps {
   bid965: number
 }
 
-export declare interface offerTinyLineProps {
-  data: offerProps[]
-  gradientColor: string
-  xTimeScale: AxisScale<number>
-  yValuesScale: AxisScale<number>
+export declare interface OfferTinyProps<T> {
+  datagraph: ReactElement
   width: number
-  margin: { top: number; right: number; bottom: number; left: number }
-  top?: number
-  left?: number
-  children?: ReactNode
+  height: number
+  margin?: { top: number; right: number; bottom: number; left: number }
 }
 
-export declare interface bidTinyLineProps {
-  data: bidProps[]
-  gradientColor: string
-  xTimeScale: AxisScale<number>
-  yValuesScale: AxisScale<number>
+export declare interface BidTinyProps<T> {
+  databid: ReactElement
   width: number
-  margin: { top: number; right: number; bottom: number; left: number }
-  top?: number
-  left?: number
-  children?: ReactNode
+  height: number
+  margin?: { top: number; right: number; bottom: number; left: number }
 }

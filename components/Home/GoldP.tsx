@@ -1,9 +1,9 @@
 import React, { Suspense, ReactElement } from 'react'
-import fetcher from '../../lib/fetch'
+import fetcher from 'lib/fetch'
 import dynamic from 'next/dynamic'
-import { IntlFormatNumber } from '../../lib/function'
+import { IntlFormatNumber } from 'lib/function'
 import { Layout } from './styles'
-import useStickySWR from '../../lib/useStickySWR'
+import useStickySWR from 'lib/useStickySWR'
 
 const GoldPrice = dynamic(() => import('@components/Gold'))
 const TopGold = dynamic(() => import('@components/Gold/TopGoldPrice'))

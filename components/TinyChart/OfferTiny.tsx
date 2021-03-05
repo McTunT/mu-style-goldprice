@@ -1,31 +1,12 @@
-import React, {
-  useMemo,
-  FC,
-  ReactElement,
-  ReactChildren,
-  Suspense,
-  ReactNode,
-} from 'react'
+import React, { useMemo, FC, ReactElement, Suspense } from 'react'
 import { scaleTime, scaleLinear } from '@visx/scale'
 import { Group } from '@visx/group'
 import { LinePath } from '@visx/shape'
 import ParentSize from '@visx/responsive/lib/components/ParentSize'
 import * as Curve from '@visx/curve'
+import { offerProps, OfferTinyProps } from '@datatypes/dataStructure'
 
-export interface Dataprice {
-  date: string
-  offer965: Number
-}
-export const background = 'transparent'
-
-export interface Props<T> {
-  datagraph: ReactElement
-  width: number
-  height: number
-  margin?: { top: number; right: number; bottom: number; left: number }
-}
-
-const OfferTiny = <T extends {}>(props: Props<T>) => {
+const OfferTiny = <T extends {}>(props: OfferTinyProps<T>) => {
   const {
     width,
     height,
@@ -36,19 +17,17 @@ const OfferTiny = <T extends {}>(props: Props<T>) => {
   if (width < 10) return null
 
   // data accessors
-  const xAccessor = (d: Dataprice) => new Date(d.date).valueOf()
-  const yAccessor = (d: Dataprice) => d.offer965
+  const xAccessor = (d: offerProps) => new Date(d.date).valueOf()
+  const yAccessor = (d: offerProps) => d.offer965
 
+  // timeseries 30 days
   const sie = (data: any) => {
     return data.length
   }
-
   const size = sie(datagraph)
-
   const tran = (data: any) => {
     return data.slice(size - 30, size)
   }
-
   const tranfromData = tran(datagraph)
 
   // bounds
@@ -87,7 +66,7 @@ const OfferTiny = <T extends {}>(props: Props<T>) => {
     <div>
       <svg width={width} height={height}>
         <Group left={margin.left} top={margin.top}>
-          <LinePath<Dataprice>
+          <LinePath<offerProps>
             data={datagraph as any}
             strokeWidth={2}
             x={(d) => timeScale(xAccessor(d)) ?? 0}

@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import fetch from 'node-fetch'
-import initMiddleware from '../../../lib/init-middleware'
+import initMiddleware from 'lib/init-middleware'
 import Cors from 'cors'
 
 const cors = Cors({
