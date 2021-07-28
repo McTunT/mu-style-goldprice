@@ -114,7 +114,6 @@ const GoldPrice: React.FC<GoldProps> = ({
             <p className="mt-2.5 font-bold text-lg font-sans text-center mb-gold font-nb text-center">
               {gold2Baht}
             </p>
-
             <p className="mt-2.5 font-bold text-lg fot-sans text-center mb-gold font-nb text-center">
               {jiwelry2Baht}
             </p>
