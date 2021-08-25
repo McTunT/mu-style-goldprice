@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import Cors from 'cors'
 import fetch from 'node-fetch'
 import initMiddleware from 'lib/init-middleware'
-import { endpoints } from 'lib/endpoints'
+// import { endpoints } from 'lib/endpoints'
 
 const cors = Cors({
   methods: ['GET'],
